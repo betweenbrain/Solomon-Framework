@@ -9,7 +9,29 @@
 	<copyright>Copyright (C) 2013 Matt Thomas. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<version>∞</version>
-	<description></description>
+	<description><![CDATA[
+		<style type="text/css">
+			.panel {background: #ddd;
+			background-image: -moz-linear-gradient(100% 100% 90deg, rgba(225,225,225,1), rgba(255,255,255,1));
+			background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255,255,255,1)), to(rgba(225,225,225,1)));
+			filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#dddddd');
+			-moz-border-radius: 2px 12px 2px 2px;
+			-webkit-border-radius: 2px 12px 2px 2px;
+			border-radius: 2px 12px 2px 2px;
+			-moz-box-shadow: 1px 1px 2px #ddd;
+			-webkit-box-shadow: 1px 1px 2px #ddd;
+			border-box-shadow: 1px 1px 2px #ddd;
+			border: 1px solid #ccc;
+			padding: 6px 10px;
+			color: #444;
+			text-decoration: none;}
+			table.admintable td.paramlist_key {font-weight:normal;text-transform:uppercase;text-align:left;}
+			table.admintable td.paramlist_value label {text-transform:none;}
+			table.admintable td.key, table.admintable td.paramlist_key,.pane-sliders .content,.pane-sliders .panel h3, div.panel fieldset {background:none;}
+			div.panel fieldset {margin-bottom:0;padding-bottom:0;}
+			table.admintable td.key, table.admintable td.paramlist_key {border:none;}
+		</style>
+		]]></description>
 	<files>
 		<folder>css</folder>
 		<folder>elements</folder>
@@ -24,6 +46,16 @@
 		<filename>params.ini</filename>
 		<filename>templateDetails.xml</filename>
 	</files>
+
+
+	<languages>
+		<language tag="en-GB">en-GB.tpl_cloaked_sansa.ini</language>
+	</languages>
+	<administration>
+		<languages>
+			<language tag="en-GB">admin/en-GB.tpl_cloaked_sansa.ini</language>
+		</languages>
+	</administration>
 
 	<positions>
 		<position>analytics</position>
@@ -44,5 +76,19 @@
 		<position>nav-below</position>
 		<position>syndicate</position>
 	</positions>
+
+	<params addpath="/templates/cloaked-sansa/elements">
+		<param type="panel"
+		       title="General"/>
+
+		<param type="panel"
+		       title="Layouts"/>
+		<param name="twoColumn"
+		       type="menuitems"
+		       label="Menu Assignment"
+		       description="Select the menu items to assign this layout to"/>
+
+		<param type="panels"/>
+	</params>
 
 </install>
