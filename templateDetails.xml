@@ -32,47 +32,16 @@
 		<position>column-2</position>
 		<position>column-3</position>
 		<position>column-4</position>
-		<position>content-above-1</position>
-		<position>content-above-2</position>
-		<position>content-above-3</position>
-		<position>content-above-4</position>
-		<position>content-above-5</position>
-		<position>content-above-6</position>
-		<position>content-below-1</position>
-		<position>content-below-2</position>
-		<position>content-below-3</position>
-		<position>content-below-4</position>
-		<position>content-below-5</position>
-		<position>content-below-6</position>
+		<position>content-above</position>
 		<position>debug</position>
 		<position>footer</position>
-		<position>footer-above-1</position>
-		<position>footer-above-2</position>
-		<position>footer-above-3</position>
-		<position>footer-above-4</position>
-		<position>footer-above-5</position>
-		<position>footer-above-6</position>
+		<position>footer-above</position>
 		<position>header</position>
-		<position>header-above-1</position>
-		<position>header-above-2</position>
-		<position>header-above-3</position>
-		<position>header-above-4</position>
-		<position>header-above-5</position>
-		<position>header-above-6</position>
-		<position>header-below-1</position>
-		<position>header-below-2</position>
-		<position>header-below-3</position>
-		<position>header-below-4</position>
-		<position>header-below-5</position>
-		<position>header-below-6</position>
+		<position>header-above</position>
+		<position>header-below</position>
 		<position>nav</position>
-		<position>nav-below-1</position>
-		<position>nav-below-2</position>
-		<position>nav-below-3</position>
-		<position>nav-below-4</position>
-		<position>nav-below-5</position>
-		<position>nav-below-6</position>
-		<position>offline</position>
+		<position>nav-above</position>
+		<position>nav-below</position>
 		<position>syndicate</position>
 	</positions>
 

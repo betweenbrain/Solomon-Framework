@@ -12,6 +12,12 @@
  */
 ?>
 
+<?php if ($this->countModules('nav')) : ?>
+<nav id="nav" class="clear clearfix">
+	<jdoc:include type="modules" name="nav" style="raw" />
+</nav>
+<?php endif ?>
+
 <?php if ($this->getBuffer('message')) : ?>
 <jdoc:include type="message" />
 <?php endif ?>

@@ -141,8 +141,8 @@ $itemId = JRequest::getInt('Itemid', 0);
 
 #------------------------- Menu Item Alias --------------------------------#
 
-$menu      = & JSite::getMenu();
-$itemAlias = $menu->getItem($itemId)->alias;
+$menu                          = & JSite::getMenu();
+$itemAlias                     = $menu->getItem($itemId)->alias;
 
 #------------------------------- Article ID -------------------------------#
 
@@ -158,7 +158,7 @@ if ($view == 'article') {
 	$article->load($articleId);
 	$articleAlias = $article->get('alias');
 } else {
-	($articleAlias = NULL);
+	$articleAlias = NULL;
 }
 
 #------------------------------- Section ID -------------------------------#
@@ -230,77 +230,40 @@ if ($itemId) {
 
 $currentComponent = JRequest::getCmd('option');
 
-#------------------Extended Template Style Overrides------------------------#
+#------------------ Style Overrides------------------------#
 
 $styleOverride = new ConstructTemplateHelper ();
 
 $styleOverride->includeFile = array();
 
-$styleOverride->includeFile[] = $template . '/css/article/' . $overrideTheme . '-article-' . $articleId . '.css';
 $styleOverride->includeFile[] = $template . '/css/article/article-' . $articleId . '.css';
 $styleOverride->includeFile[] = $template . '/css/article/article.css';
-$styleOverride->includeFile[] = $template . '/css/item/' . $overrideTheme . '-item-' . $itemId . '.css';
 $styleOverride->includeFile[] = $template . '/css/item/item-' . $itemId . '.css';
-$styleOverride->includeFile[] = $template . '/css/category/' . $overrideTheme . '-category-' . $catId . '.css';
 $styleOverride->includeFile[] = $template . '/css/category/category-' . $catId . '.css';
 if ($view == 'category') {
 	$styleOverride->includeFile[] = $template . '/css/category/category.css';
 }
-$styleOverride->includeFile[] = $template . '/css/section/' . $overrideTheme . '-section-' . $sectionId . '.css';
 $styleOverride->includeFile[] = $template . '/css/section/section-' . $sectionId . '.css';
 $styleOverride->includeFile[] = $template . '/css/section/section.css';
 $styleOverride->includeFile[] = $template . '/css/component/' . $currentComponent . '.css';
-$styleOverride->includeFile[] = $template . '/css/component/' . $overrideTheme . '-' . $currentComponent . '.css';
 
-#---------------Mobile Extended Template Style Overrides---------------------#
-
-$mobileStyleOverride = new ConstructTemplateHelper ();
-
-$mobileStyleOverride->includeFile = array();
-
-$mobileStyleOverride->includeFile[] = $template . '/css/article/article-' . $articleId . '-mobile.css';
-$mobileStyleOverride->includeFile[] = $template . '/css/item/item-' . $itemId . '-mobile.css';
-$mobileStyleOverride->includeFile[] = $template . '/css/category/category-' . $catId . '-mobile.css';
-$mobileStyleOverride->includeFile[] = $template . '/css/section/section-' . $sectionId . '-mobile.css';
-$mobileStyleOverride->includeFile[] = $template . '/css/component/' . $currentComponent . '-mobile.css';
-
-#-------------------Extended Template Layout Overrides-----------------------#
+#------------------- Layout Overrides-----------------------#
 
 $layoutOverride = new ConstructTemplateHelper ();
 
 $layoutOverride->includeFile = array();
 
-$layoutOverride->includeFile[] = $template . '/layouts/article/' . $overrideTheme . '-article-' . $articleId . '.php';
 $layoutOverride->includeFile[] = $template . '/layouts/article/article-' . $articleId . '.php';
 $layoutOverride->includeFile[] = $template . '/layouts/article/article.php';
-$layoutOverride->includeFile[] = $template . '/layouts/item/' . $overrideTheme . '-item-' . $itemId . '.php';
 $layoutOverride->includeFile[] = $template . '/layouts/item/item-' . $itemId . '.php';
-$layoutOverride->includeFile[] = $template . '/layouts/category/' . $overrideTheme . '-category-' . $catId . '.php';
 $layoutOverride->includeFile[] = $template . '/layouts/category/category-' . $catId . '.php';
 if ($view == 'category') {
 	$layoutOverride->includeFile[] = $template . '/layouts/category/category.php';
 }
-$layoutOverride->includeFile[] = $template . '/layouts/section/' . $overrideTheme . '-section-' . $sectionId . '.php';
 $layoutOverride->includeFile[] = $template . '/layouts/section/section-' . $sectionId . '.php';
 $layoutOverride->includeFile[] = $template . '/layouts/section/section.php';
-$layoutOverride->includeFile[] = $template . '/layouts/component/' . $overrideTheme . '-' . $currentComponent . '.php';
 $layoutOverride->includeFile[] = $template . '/layouts/component/' . $currentComponent . '.php';
-$layoutOverride->includeFile[] = $template . '/layouts/' . $overrideTheme . '-index.php';
 $layoutOverride->includeFile[] = $template . '/layouts/index.php';
-
-#---------------Mobile Extended Template Layout Overrides--------------------#
-
-$mobileLayoutOverride = new ConstructTemplateHelper ();
-
-$mobileLayoutOverride->includeFile = array();
-
-$mobileLayoutOverride->includeFile[] = $template . '/layouts/article/article-' . $articleId . '-mobile.php';
-$mobileLayoutOverride->includeFile[] = $template . '/layouts/item/item-' . $itemId . '-mobile.php';
-$mobileLayoutOverride->includeFile[] = $template . '/layouts/category/category-' . $catId . '-mobile.php';
-$mobileLayoutOverride->includeFile[] = $template . '/layouts/category/category-' . $catId . '-mobile.php';
-$mobileLayoutOverride->includeFile[] = $template . '/layouts/category/category-' . $catId . '-mobile.php';
-$mobileLayoutOverride->includeFile[] = $template . '/layouts/component/' . $currentComponent . '-mobile.php';
-$mobileLayoutOverride->includeFile[] = $template . '/layouts/mobile.php';
 
 #---------------------------- Head Elements --------------------------------#
 

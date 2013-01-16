@@ -19,7 +19,9 @@
 <body class="<?php echo $columnLayout; echo ' '.$currentComponent; if($articleId) echo ' '.$articleAlias .'-article'; if ($itemId) echo ' '.$itemAlias.'-item'; if($catId) echo ' '.$catAlias .'-category'; if($sectionId) echo ' '.$secAlias.'-section' ?>">
 
 <header id="header" class="clear clearfix">
+
 	<?php if ($this->countModules('header')) : ?>
 	<jdoc:include type="modules" name="header" style="html" />
 	<?php endif ?>
+
 </header>

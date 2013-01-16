@@ -1,9 +1,4 @@
-<?php // from http://forum.joomla.org/viewtopic.php?p=2102441#p2102441
-defined('_JEXEC') or die;
-
-global $mainframe;
-jimport('joomla.filesystem.file');
-$tparams = new JParameter(JFile::read(JPATH_BASE.DS.'templates'.DS.$mainframe->getTemplate().DS.'params.ini'));
+<?php defined('_JEXEC') or die;
 
 if ( ! defined('CmodMainMenuXMLCallbackDefined') )
 {
@@ -36,20 +31,19 @@ function CmodMainMenuXMLCallback(&$node, $args)
 				$node->removeChild($child);
 			}
 		}
-echo str_replace('<ul class="menu">','<ul class="menu" data-role="listview" data-inset="true" data-theme="'.$tparams->get('mNavDataTheme').'">', $mainMenuContent);
 
-// count items in the menu array
+		// count items in the menu array
 		$children_count = count($node->children());
 		$children_index = 0;
 		foreach ($node->children() as $child) {
-// first item check(0)
+		// first item check(0)
 			if ($children_index == 0) {
-// add first class attribute to the li tag 
+		// add first class attribute to the li tag
 				$child->addAttribute('class', 'first');
 			}
-// last item check (-1)
+		// last item check (-1)
 			if ($children_index == $children_count - 1) {
-// add last class attribute to the li tag
+		// add last class attribute to the li tag
 				$child->addAttribute('class', 'last');
 			}
 			$children_index++;
@@ -59,9 +53,9 @@ echo str_replace('<ul class="menu">','<ul class="menu" data-role="listview" data
 
 	if (($node->name() == 'li') && isset($node->ul)) {
 		if ($node->attributes('class')) {
-			$node->addAttribute('class', $node->attributes('class').' parent'); // print_r($node);
+			$node->addAttribute('class', $node->attributes('class').' parent');
 		} else {
-			$node->addAttribute('class', 'parent'); // print_r($node);
+			$node->addAttribute('class', 'parent');
 		}
 	}
 
