@@ -33,7 +33,7 @@ unset($doc->_scripts[$this->baseurl . '/media/system/js/mootools.js']);
 unset($doc->_scripts[$this->baseurl . '/plugins/system/mtupgrade/mootools.js']);
 unset($doc->_scripts[$this->baseurl . '/media/system/js/caption.js']);
 
-#----------------------------- Moldule Counts -----------------------------#
+#----------------------------- Moldule Counts -------------------------#
 // from http://groups.google.com/group/joomla-dev-general/browse_thread/thread/b54f3f131dd173d
 
 $headerAboveCount1 = (int) ($this->countModules('header-above-1') > 0);
@@ -141,8 +141,8 @@ $itemId = JRequest::getInt('Itemid', 0);
 
 #------------------------- Menu Item Alias --------------------------------#
 
-$menu                          = & JSite::getMenu();
-$itemAlias                     = $menu->getItem($itemId)->alias;
+$menu      = & JSite::getMenu();
+$itemAlias = $menu->getItem($itemId)->alias;
 
 #------------------------------- Article ID -------------------------------#
 
@@ -190,7 +190,7 @@ $sectionId = getSection(JRequest::getInt('id'));
 if ($sectionId) {
 	$section =& JTable::getInstance("section");
 	$section->load($sectionId);
-	$secAlias = $section->get('alias');
+	$sectionAlias = $section->get('alias');
 }
 
 #------------------------------ Category ID -------------------------------#
@@ -211,19 +211,14 @@ function getCategory($iId) {
 	}
 }
 
-$catId = getCategory(JRequest::getInt('id'));
+$categoryId = getCategory(JRequest::getInt('id'));
 
 #----------------------------- Category Alias -----------------------------#
 
-if ($catId) {
+if ($categoryId) {
 	$category =& JTable::getInstance("category");
-	$category->load($catId);
+	$category->load($categoryId);
 	$catAlias = $category->get('alias');
-}
-#--------------------------------- Alias ----------------------------------#
-
-if ($itemId) {
-	$currentAlias = JSite::getMenu()->getActive()->alias;
 }
 
 #----------------------------- Component Name -----------------------------#
@@ -239,7 +234,7 @@ $styleOverride->includeFile = array();
 $styleOverride->includeFile[] = $template . '/css/article/article-' . $articleId . '.css';
 $styleOverride->includeFile[] = $template . '/css/article/article.css';
 $styleOverride->includeFile[] = $template . '/css/item/item-' . $itemId . '.css';
-$styleOverride->includeFile[] = $template . '/css/category/category-' . $catId . '.css';
+$styleOverride->includeFile[] = $template . '/css/category/category-' . $categoryId . '.css';
 if ($view == 'category') {
 	$styleOverride->includeFile[] = $template . '/css/category/category.css';
 }
@@ -256,7 +251,7 @@ $layoutOverride->includeFile = array();
 $layoutOverride->includeFile[] = $template . '/layouts/article/article-' . $articleId . '.php';
 $layoutOverride->includeFile[] = $template . '/layouts/article/article.php';
 $layoutOverride->includeFile[] = $template . '/layouts/item/item-' . $itemId . '.php';
-$layoutOverride->includeFile[] = $template . '/layouts/category/category-' . $catId . '.php';
+$layoutOverride->includeFile[] = $template . '/layouts/category/category-' . $categoryId . '.php';
 if ($view == 'category') {
 	$layoutOverride->includeFile[] = $template . '/layouts/category/category.php';
 }
