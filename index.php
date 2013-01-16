@@ -14,28 +14,36 @@
 // Load Joomla filesystem package
 jimport('joomla.filesystem.file');
 
-// Load template logic
-$logic   = JPATH_THEMES . '/' . $this->template . '/elements/logic.php';
-$header  = JPATH_THEMES . '/' . $this->template . '/layouts/header.php';
-$default = JPATH_THEMES . '/' . $this->template . '/layouts/default.php';
-$footer  = JPATH_THEMES . '/' . $this->template . '/layouts/footer.php';
+$logic = JPATH_THEMES . '/' . $this->template . '/elements/logic.php';
 
+// Load logic
 if (JFile::exists($logic)) {
-	include $logic;
+	include_once $logic;
 }
+
+// Template
+$header          = JPATH_THEMES . '/' . $this->template . '/layouts/header.php';
+$default         = JPATH_THEMES . '/' . $this->template . '/layouts/default.php';
+$footer          = JPATH_THEMES . '/' . $this->template . '/layouts/footer.php';
+$override        = $layoutOverride->getIncludeFile();
+$twoColumn       = $this->params->get('twoColumnLayout');
+$twoColumnLayout = JPATH_THEMES . '/' . $this->template . '/layouts/twoColumn.php';
+
+// Load template header
 if (JFile::exists($header)) {
 	include $header;
 }
 
-// Layouts
-$layout = $layoutOverride->getIncludeFile();
-
-if ($layout) {
-	include_once $layout;
+// Load template body
+if (in_array($itemId, $twoColumn) && JFile::exists($twoColumnLayout)) {
+	include $twoColumnLayout;
+} elseif ($override) {
+	include $override;
 } else {
-	include_once $default;
+	include $default;
 }
 
+// Load footer
 if (JFile::exists($footer)) {
 	include $footer;
 }
