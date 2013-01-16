@@ -16,7 +16,7 @@
 <head>
 <jdoc:include type="head" /></head>
 
-<body class="<?php echo $columnLayout; echo ' '.$currentComponent; if($articleId) echo ' '.$articleAlias .'-article'; if ($itemId) echo ' '.$itemAlias.'-item'; if($catId) echo ' '.$catAlias .'-category'; if($sectionId) echo ' '.$secAlias.'-section' ?>">
+<body class="<?php echo $columnLayout; echo ' '.$currentComponent; if($articleId) echo ' '.$articleAlias .'-article'; if ($itemId) echo ' '.$itemAlias.'-item'; if($categoryId) echo ' '.$catAlias .'-category'; if($sectionId) echo ' '.$sectionAlias.'-section' ?>">
 
 <header id="header" class="clear clearfix">
 
