@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install PUBLIC "-//Joomla! 2.5//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/2.5/template-install.dtd">
+<install version="2.5" type="template" client="site" method="upgrade">
+	<name>cloaked-sansa</name>
+	<creationDate>January 15, 2013</creationDate>
+	<author>Matt Thomas</author>
+	<authorEmail>matt@betweenbrain.com</authorEmail>
+	<authorUrl>http://betweenbrain.com</authorUrl>
+	<copyright>Copyright (C) 2013 Matt Thomas. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<version>∞</version>
+	<description></description>
+	<files>
+		<folder>css</folder>
+		<folder>elements</folder>
+		<folder>html</folder>
+		<folder>images</folder>
+		<folder>js</folder>
+		<folder>layouts</folder>
+		<filename>component.php</filename>
+		<filename>favicon.ico</filename>
+		<filename>favicon.png</filename>
+		<filename>index.php</filename>
+		<filename>params.ini</filename>
+		<filename>templateDetails.xml</filename>
+	</files>
+
+	<positions>
+		<position>analytics</position>
+		<position>breadcrumbs</position>
+		<position>column-1</position>
+		<position>column-2</position>
+		<position>column-3</position>
+		<position>column-4</position>
+		<position>content-above-1</position>
+		<position>content-above-2</position>
+		<position>content-above-3</position>
+		<position>content-above-4</position>
+		<position>content-above-5</position>
+		<position>content-above-6</position>
+		<position>content-below-1</position>
+		<position>content-below-2</position>
+		<position>content-below-3</position>
+		<position>content-below-4</position>
+		<position>content-below-5</position>
+		<position>content-below-6</position>
+		<position>debug</position>
+		<position>footer</position>
+		<position>footer-above-1</position>
+		<position>footer-above-2</position>
+		<position>footer-above-3</position>
+		<position>footer-above-4</position>
+		<position>footer-above-5</position>
+		<position>footer-above-6</position>
+		<position>header</position>
+		<position>header-above-1</position>
+		<position>header-above-2</position>
+		<position>header-above-3</position>
+		<position>header-above-4</position>
+		<position>header-above-5</position>
+		<position>header-above-6</position>
+		<position>header-below-1</position>
+		<position>header-below-2</position>
+		<position>header-below-3</position>
+		<position>header-below-4</position>
+		<position>header-below-5</position>
+		<position>header-below-6</position>
+		<position>nav</position>
+		<position>nav-below-1</position>
+		<position>nav-below-2</position>
+		<position>nav-below-3</position>
+		<position>nav-below-4</position>
+		<position>nav-below-5</position>
+		<position>nav-below-6</position>
+		<position>offline</position>
+		<position>syndicate</position>
+	</positions>
+
+</install>
