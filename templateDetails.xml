@@ -80,10 +80,21 @@
 	<params addpath="/templates/cloaked-sansa/elements">
 		<param type="panel"
 		       title="General"/>
-
 		<param type="panel"
-		       title="Layouts"/>
+		       title="Two Column Layout"/>
 		<param name="twoColumn"
+		       type="menuitems"
+		       label="Menu Assignment"
+		       description="Select the menu items to assign this layout to"/>
+		<param type="panel"
+		       title="One Third Layout"/>
+		<param name="oneThird"
+		       type="menuitems"
+		       label="Menu Assignment"
+		       description="Select the menu items to assign this layout to"/>
+		<param type="panel"
+		       title="Two Third Layout"/>
+		<param name="twoThird"
 		       type="menuitems"
 		       label="Menu Assignment"
 		       description="Select the menu items to assign this layout to"/>
