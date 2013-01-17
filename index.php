@@ -14,6 +14,7 @@
 // Load Joomla filesystem package
 jimport('joomla.filesystem.file');
 
+// Define absolute path to logic file
 $logic = JPATH_THEMES . '/' . $this->template . '/elements/logic.php';
 
 // Load logic
@@ -21,22 +22,10 @@ if (JFile::exists($logic)) {
 	include_once $logic;
 }
 
-// Template
-$header = JPATH_THEMES . '/' . $this->template . '/layouts/header.php';
-$footer = JPATH_THEMES . '/' . $this->template . '/layouts/footer.php';
+// Get layout file
 $layout = $layout->getIncludeFile();
-
-// Load template header
-if (JFile::exists($header)) {
-	include $header;
-}
 
 // Load template body, see line 221 of logic.php
 if ($layout) {
 	include $layout;
-}
-
-// Load footer
-if (JFile::exists($footer)) {
-	include $footer;
 }
