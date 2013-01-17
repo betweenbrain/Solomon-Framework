@@ -1,4 +1,4 @@
-<?php
+<?php defined('_JEXEC') or die;
 
 /**
  * File       index.php
@@ -22,25 +22,17 @@ if (JFile::exists($logic)) {
 }
 
 // Template
-$header          = JPATH_THEMES . '/' . $this->template . '/layouts/header.php';
-$default         = JPATH_THEMES . '/' . $this->template . '/layouts/default.php';
-$footer          = JPATH_THEMES . '/' . $this->template . '/layouts/footer.php';
-$override        = $layoutOverride->getIncludeFile();
-$twoColumn       = $this->params->get('twoColumnLayout');
-$twoColumnLayout = JPATH_THEMES . '/' . $this->template . '/layouts/twoColumn.php';
+$header = JPATH_THEMES . '/' . $this->template . '/layouts/header.php';
+$footer = JPATH_THEMES . '/' . $this->template . '/layouts/footer.php';
+$layout = $layout->getIncludeFile();
 
 // Load template header
 if (JFile::exists($header)) {
 	include $header;
 }
 
-// Load template body
-if (in_array($itemId, $twoColumn) && JFile::exists($twoColumnLayout)) {
-	include $twoColumnLayout;
-} elseif ($override) {
-	include $override;
-} else {
-	include $default;
+if ($layout) {
+	include $layout;
 }
 
 // Load footer
