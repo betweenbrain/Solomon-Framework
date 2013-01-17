@@ -6,7 +6,7 @@
  * Author     Matt Thomas
  * Website    http://betweenbrain.com
  * Email      matt@betweenbrain.com
- * Support    https://github.com/betweenbrain/
+ * Support    https://github.com/betweenbrain/cloaked-sansa/issues
  * Copyright  Copyright (C) 2013 betweenbrain llc. All Rights Reserved.
  * License    GNU GPL v3 or later
  */
@@ -31,6 +31,7 @@ if (JFile::exists($header)) {
 	include $header;
 }
 
+// Load template body, see line 221 of logic.php
 if ($layout) {
 	include $layout;
 }
