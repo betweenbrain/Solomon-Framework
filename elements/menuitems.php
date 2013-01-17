@@ -19,6 +19,6 @@ class JElementMenuitems extends JElement {
 
 		$options = JHTML::_('menu.linkoptions');
 
-		return JHTML::_('select.genericlist', $options, '' . $control_name . '[' . $name . '][]', 'class="inputbox" size="25" multiple="multiple"', 'value', 'text', $value, $control_name . $name);
+		return JHTML::_('select.genericlist', $options, '' . $control_name . '[' . $name . '][]', 'class="inputbox" size="40" multiple="multiple"', 'value', 'text', $value, $control_name . $name);
 	}
 }
