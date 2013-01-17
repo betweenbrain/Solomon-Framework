@@ -13,18 +13,16 @@ if (JFile::exists(dirname(__FILE__) . '/helper.php')) {
 
 // To enable use of site configuration
 $app = JFactory::getApplication();
-// Get the base URL of the website
-$baseUrl = JURI::base();
 // Returns a reference to the global document object
 $doc = JFactory::getDocument();
 // Define relative shortcut for current template directory
 $template = 'templates/' . $this->template;
-// Get the current URL
-$url = clone(JURI::getInstance());
-// To access the current user object
-$user = JFactory::getUser();
 // Get the current view
 $view = JRequest::getCmd('view');
+
+// Common template elements (use absolute paths for security)
+$header = JPATH_THEMES . '/' . $this->template . '/layouts/header.php';
+$footer = JPATH_THEMES . '/' . $this->template . '/layouts/footer.php';
 
 // Remove MooTools and core scripts
 unset($doc->_scripts[$this->baseurl . '/media/system/js/mootools.js']);
@@ -32,7 +30,6 @@ unset($doc->_scripts[$this->baseurl . '/plugins/system/mtupgrade/mootools.js']);
 unset($doc->_scripts[$this->baseurl . '/media/system/js/caption.js']);
 
 #----------------------------- Moldule Counts -------------------------#
-// from http://groups.google.com/group/joomla-dev-general/browse_thread/thread/b54f3f131dd173d
 
 $headerAboveCount1 = (int) ($this->countModules('header-above-1') > 0);
 $headerAboveCount2 = (int) ($this->countModules('header-above-2') > 0);
@@ -154,9 +151,8 @@ if ($view == 'article') {
 	$article =& JTable::getInstance("content");
 	$article->load($articleId);
 	$articleAlias = $article->get('alias');
-} else {
-	$articleAlias = NULL;
 }
+$articleAlias = NULL;
 
 #------------------------------- Section ID -------------------------------#
 
@@ -218,7 +214,7 @@ $categoryAlias = $category->get('alias');
 
 $currentComponent = JRequest::getCmd('option');
 
-#------------------- Layout Logic -----------------------#
+#------------------- Template Layout Logic -----------------------#
 
 $layout              = new ConstructTemplateHelper ();
 $layout->includeFile = array();
