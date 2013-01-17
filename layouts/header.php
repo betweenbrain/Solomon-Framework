@@ -16,7 +16,7 @@
 <head>
 <jdoc:include type="head" /></head>
 
-<body class="<?php echo $columnLayout; echo ' ' . $currentComponent; if($articleId) echo ' ' . $articleAlias; if ($itemId) echo ' ' . $itemAlias; if($categoryId) echo ' ' . $categoryAlias; if($sectionId) echo ' ' . $sectionAlias ?>" data-diagnostic="<?php echo 'layout:' . $columnLayout; echo ' component:'.$currentComponent; if($articleId) echo ' article:' . $articleAlias; if ($itemId) echo ' item:' . $itemAlias; if($categoryId) echo ' category:' . $categoryAlias; if($sectionId) echo ' section:' . $sectionAlias ?>">
+<body class="<?php echo $columnLayout; echo ' ' . $currentComponent; if($articleId) echo ' ' . $articleAlias; if ($itemId) echo ' ' . $itemAlias; if($categoryId) echo ' ' . $categoryAlias; if($sectionId) echo ' ' . $sectionAlias ?>" data-diagnostic="<?php echo 'column layout:' . $columnLayout; echo ' component:'.$currentComponent; if($articleId) echo ' article:' . $articleAlias; if ($itemId) echo ' item:' . $itemAlias; if($categoryId) echo ' category:' . $categoryAlias; if($sectionId) echo ' section:' . $sectionAlias ?>">
 
 <header id="header" class="clear clearfix">
 
