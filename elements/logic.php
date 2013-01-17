@@ -277,19 +277,26 @@ $layout->includeFile[] = $template . '/layouts/default.php';
 
 #------------------ Dynamic Style Sheets ------------------------#
 
-$styleSheet = new ConstructTemplateHelper ();
-
+$styleSheet              = new ConstructTemplateHelper ();
 $styleSheet->includeFile = array();
 
+// Single article specific stylesheet
 $styleSheet->includeFile[] = $template . '/css/article/' . $articleAlias . '.css';
+// All articles stylesheet
 $styleSheet->includeFile[] = $template . '/css/article/article.css';
+// Single menu item specific stylesheet
 $styleSheet->includeFile[] = $template . '/css/item/' . $itemAlias . '.css';
+// Single category specific stylesheet
 $styleSheet->includeFile[] = $template . '/css/category/' . $categoryAlias . '.css';
+// All categories stylesheet
 if ($view == 'category') {
 	$styleSheet->includeFile[] = $template . '/css/category/category.css';
 }
+// Single section specific stylesheet
 $styleSheet->includeFile[] = $template . '/css/section/' . $sectionAlias . '.css';
+// All sections stylesheet
 $styleSheet->includeFile[] = $template . '/css/section/section.css';
+// Single component specific stylesheet
 $styleSheet->includeFile[] = $template . '/css/component/' . $currentComponent . '.css';
 
 #---------------------------- Head Elements --------------------------------#
@@ -300,7 +307,7 @@ $doc->addCustomTag('<meta name="copyright" content="' . htmlspecialchars($app->g
 // Transparent favicon
 $doc->addFavicon($template . '/favicon.png', 'image/png', 'icon');
 
-// Style sheets
+// Stylesheets
 $doc->addStyleSheet($template . '/css/screen.css', 'text/css', 'screen');
 
 // Dynamic style sheet returned from our template helper
