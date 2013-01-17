@@ -161,20 +161,20 @@ if ($view == 'article') {
 #------------------------------- Section ID -------------------------------#
 
 function getSection($iId) {
-	$database =& JFactory::getDBO();
+	$db =& JFactory::getDBO();
 	if (JRequest::getCmd('view', 0) == "section") {
 		return JRequest::getInt('id');
 	} elseif (JRequest::getCmd('view', 0) == "category") {
 		$sql = "SELECT section FROM #__categories WHERE id = $iId ";
-		$database->setQuery($sql);
-		$row = $database->loadResult();
+		$db->setQuery($sql);
+		$row = $db->loadResult();
 
 		return $row;
 	} elseif (JRequest::getCmd('view', 0) == "article") {
 		$temp = explode(":", JRequest::getInt('id'));
 		$sql  = "SELECT sectionid FROM #__content WHERE id = " . $temp[0];
-		$database->setQuery($sql);
-		$row = $database->loadResult();
+		$db->setQuery($sql);
+		$row = $db->loadResult();
 
 		return $row;
 	}
@@ -190,8 +190,8 @@ $sectionAlias = $section->get('alias');
 
 #------------------------------ Category ID -------------------------------#
 
-function getCategory($iId) {
-	$database =& JFactory::getDBO();
+function getCategory() {
+	$db =& JFactory::getDBO();
 	if (JRequest::getCmd('view', 0) == "section") {
 		return NULL;
 	} elseif (JRequest::getCmd('view', 0) == "category") {
@@ -199,14 +199,14 @@ function getCategory($iId) {
 	} elseif (JRequest::getCmd('view', 0) == "article") {
 		$temp = explode(":", JRequest::getInt('id'));
 		$sql  = "SELECT catid FROM #__content WHERE id = " . $temp[0];
-		$database->setQuery($sql);
-		$row = $database->loadResult();
+		$db->setQuery($sql);
+		$row = $db->loadResult();
 
 		return $row;
 	}
 }
 
-$categoryId = getCategory(JRequest::getInt('id'));
+$categoryId = getCategory();
 
 #----------------------------- Category Alias -----------------------------#
 
@@ -226,6 +226,12 @@ $twoColumn           = $this->params->get('twoColumn');
 $oneThird            = $this->params->get('oneThird');
 $twoThird            = $this->params->get('twoThird');
 
+/**
+ * Function to check if the currently menu item matches the supplied condition
+ *
+ * @param $condition a single string, or array, of selected menu items
+ * @return bool
+ */
 function isLayout($condition) {
 	$itemId = JRequest::getInt('Itemid', 0);
 	if (is_array($condition)) {
@@ -240,7 +246,11 @@ function isLayout($condition) {
 	return FALSE;
 }
 
-// Load template body
+// Check for article specific layouts first, they are more specific than menu items
+$layout->includeFile[] = $template . '/layouts/article/' . $articleAlias . '.php';
+// All articles layout
+$layout->includeFile[] = $template . '/layouts/article/article.php';
+// Menu item specific layout assignments via parameter
 if (isLayout($twoColumn)) {
 	$layout->includeFile[] = $template . '/layouts/twoColumn.php';
 } elseif (isLayout($oneThird)) {
@@ -248,17 +258,21 @@ if (isLayout($twoColumn)) {
 } elseif (isLayout($twoThird)) {
 	$layout->includeFile[] = $template . '/layouts/twoThird.php';
 }
-
-$layout->includeFile[] = $template . '/layouts/article/' . $articleAlias . '.php';
-$layout->includeFile[] = $template . '/layouts/article/article.php';
+// Non-parameter menu item specific layouts
 $layout->includeFile[] = $template . '/layouts/item/' . $itemAlias . '.php';
+// Single category specific layouts
 $layout->includeFile[] = $template . '/layouts/category/' . $categoryAlias . '.php';
+// All categories layout
 if ($view == 'category') {
 	$layout->includeFile[] = $template . '/layouts/category/category.php';
 }
+// Single section specific layout
 $layout->includeFile[] = $template . '/layouts/section/' . $sectionAlias . '.php';
+// All sections layout
 $layout->includeFile[] = $template . '/layouts/section/section.php';
+// Single component specific layout
 $layout->includeFile[] = $template . '/layouts/component/' . $currentComponent . '.php';
+// Default layout
 $layout->includeFile[] = $template . '/layouts/default.php';
 
 #------------------ Dynamic Style Sheets ------------------------#
