@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE install PUBLIC "-//Joomla! 2.5//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/2.5/template-install.dtd">
-<install version="2.5" type="template" client="site" method="upgrade">
+<install version="2.5"
+         type="template"
+         client="site"
+         method="upgrade">
 	<name>cloaked-sansa</name>
 	<creationDate>January 15, 2013</creationDate>
 	<author>Matt Thomas</author>
@@ -71,15 +74,6 @@
 		<filename>templateDetails.xml</filename>
 	</files>
 
-	<languages>
-		<language tag="en-GB">en-GB.tpl_cloaked_sansa.ini</language>
-	</languages>
-	<administration>
-		<languages>
-			<language tag="en-GB">admin/en-GB.tpl_cloaked_sansa.ini</language>
-		</languages>
-	</administration>
-
 	<positions>
 		<position>analytics</position>
 		<position>breadcrumbs</position>
@@ -121,7 +115,6 @@
 		       type="menuitems"
 		       label="Menu Assignment"
 		       description="Select the menu items to assign this layout to"/>
-
 		<param type="panels"/>
 	</params>
 
