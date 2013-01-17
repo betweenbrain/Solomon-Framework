@@ -19,8 +19,6 @@ $baseUrl = JURI::base();
 $doc = JFactory::getDocument();
 // Define relative shortcut for current template directory
 $template = 'templates/' . $this->template;
-// Define absolute path to the template directory
-$templateDir = JPATH_THEMES . '/' . $this->template;
 // Get the current URL
 $url = clone(JURI::getInstance());
 // To access the current user object
@@ -141,16 +139,15 @@ $itemId = JRequest::getInt('Itemid', 0);
 
 #------------------------- Menu Item Alias --------------------------------#
 
-$menu      = & JSite::getMenu();
+$menu      =& JSite::getMenu();
 $itemAlias = $menu->getItem($itemId)->alias;
 
 #------------------------------- Article ID -------------------------------#
 
 if ($view == 'article') {
 	$articleId = JRequest::getInt('id');
-} else {
-	($articleId = NULL);
 }
+$articleId = NULL;
 
 #------------------------------- Article Alias -------------------------------#
 if ($view == 'article') {
@@ -164,7 +161,7 @@ if ($view == 'article') {
 #------------------------------- Section ID -------------------------------#
 
 function getSection($iId) {
-	$database = & JFactory::getDBO();
+	$database =& JFactory::getDBO();
 	if (JRequest::getCmd('view', 0) == "section") {
 		return JRequest::getInt('id');
 	} elseif (JRequest::getCmd('view', 0) == "category") {
@@ -187,16 +184,14 @@ $sectionId = getSection(JRequest::getInt('id'));
 
 #----------------------------- Section Alias -----------------------------#
 
-if ($sectionId) {
-	$section =& JTable::getInstance("section");
-	$section->load($sectionId);
-	$sectionAlias = $section->get('alias');
-}
+$section =& JTable::getInstance("section");
+$section->load($sectionId);
+$sectionAlias = $section->get('alias');
 
 #------------------------------ Category ID -------------------------------#
 
 function getCategory($iId) {
-	$database = & JFactory::getDBO();
+	$database =& JFactory::getDBO();
 	if (JRequest::getCmd('view', 0) == "section") {
 		return NULL;
 	} elseif (JRequest::getCmd('view', 0) == "category") {
@@ -215,50 +210,73 @@ $categoryId = getCategory(JRequest::getInt('id'));
 
 #----------------------------- Category Alias -----------------------------#
 
-if ($categoryId) {
-	$category =& JTable::getInstance("category");
-	$category->load($categoryId);
-	$catAlias = $category->get('alias');
-}
+$category =& JTable::getInstance("category");
+$category->load($categoryId);
+$categoryAlias = $category->get('alias');
 
 #----------------------------- Component Name -----------------------------#
 
 $currentComponent = JRequest::getCmd('option');
 
-#------------------ Style Overrides------------------------#
+#------------------- Layout Logic -----------------------#
 
-$styleOverride = new ConstructTemplateHelper ();
+$layout              = new ConstructTemplateHelper ();
+$layout->includeFile = array();
+$twoColumn           = $this->params->get('twoColumn');
+$oneThird            = $this->params->get('oneThird');
+$twoThird            = $this->params->get('twoThird');
 
-$styleOverride->includeFile = array();
+function isLayout($condition) {
+	$itemId = JRequest::getInt('Itemid', 0);
+	if (is_array($condition)) {
+		if (in_array($itemId, $condition)) {
+			return TRUE;
+		}
+	} // Single item assignment is not an array
+	elseif ($itemId == $condition) {
+		return TRUE;
+	}
 
-$styleOverride->includeFile[] = $template . '/css/article/article-' . $articleId . '.css';
-$styleOverride->includeFile[] = $template . '/css/article/article.css';
-$styleOverride->includeFile[] = $template . '/css/item/item-' . $itemId . '.css';
-$styleOverride->includeFile[] = $template . '/css/category/category-' . $categoryId . '.css';
-if ($view == 'category') {
-	$styleOverride->includeFile[] = $template . '/css/category/category.css';
+	return FALSE;
 }
-$styleOverride->includeFile[] = $template . '/css/section/section-' . $sectionId . '.css';
-$styleOverride->includeFile[] = $template . '/css/section/section.css';
-$styleOverride->includeFile[] = $template . '/css/component/' . $currentComponent . '.css';
 
-#------------------- Layout Overrides-----------------------#
-
-$layoutOverride = new ConstructTemplateHelper ();
-
-$layoutOverride->includeFile = array();
-
-$layoutOverride->includeFile[] = $template . '/layouts/article/article-' . $articleId . '.php';
-$layoutOverride->includeFile[] = $template . '/layouts/article/article.php';
-$layoutOverride->includeFile[] = $template . '/layouts/item/item-' . $itemId . '.php';
-$layoutOverride->includeFile[] = $template . '/layouts/category/category-' . $categoryId . '.php';
-if ($view == 'category') {
-	$layoutOverride->includeFile[] = $template . '/layouts/category/category.php';
+// Load template body
+if (isLayout($twoColumn)) {
+	$layout->includeFile[] = $template . '/layouts/twoColumn.php';
+} elseif (isLayout($oneThird)) {
+	$layout->includeFile[] = $template . '/layouts/oneThird.php';
+} elseif (isLayout($twoThird)) {
+	$layout->includeFile[] = $template . '/layouts/twoThird.php';
 }
-$layoutOverride->includeFile[] = $template . '/layouts/section/section-' . $sectionId . '.php';
-$layoutOverride->includeFile[] = $template . '/layouts/section/section.php';
-$layoutOverride->includeFile[] = $template . '/layouts/component/' . $currentComponent . '.php';
-$layoutOverride->includeFile[] = $template . '/layouts/index.php';
+
+$layout->includeFile[] = $template . '/layouts/article/' . $articleAlias . '.php';
+$layout->includeFile[] = $template . '/layouts/article/article.php';
+$layout->includeFile[] = $template . '/layouts/item/' . $itemAlias . '.php';
+$layout->includeFile[] = $template . '/layouts/category/' . $categoryAlias . '.php';
+if ($view == 'category') {
+	$layout->includeFile[] = $template . '/layouts/category/category.php';
+}
+$layout->includeFile[] = $template . '/layouts/section/' . $sectionAlias . '.php';
+$layout->includeFile[] = $template . '/layouts/section/section.php';
+$layout->includeFile[] = $template . '/layouts/component/' . $currentComponent . '.php';
+$layout->includeFile[] = $template . '/layouts/default.php';
+
+#------------------ Dynamic Style Sheets ------------------------#
+
+$styleSheet = new ConstructTemplateHelper ();
+
+$styleSheet->includeFile = array();
+
+$styleSheet->includeFile[] = $template . '/css/article/' . $articleAlias . '.css';
+$styleSheet->includeFile[] = $template . '/css/article/article.css';
+$styleSheet->includeFile[] = $template . '/css/item/' . $itemAlias . '.css';
+$styleSheet->includeFile[] = $template . '/css/category/' . $categoryAlias . '.css';
+if ($view == 'category') {
+	$styleSheet->includeFile[] = $template . '/css/category/category.css';
+}
+$styleSheet->includeFile[] = $template . '/css/section/' . $sectionAlias . '.css';
+$styleSheet->includeFile[] = $template . '/css/section/section.css';
+$styleSheet->includeFile[] = $template . '/css/component/' . $currentComponent . '.css';
 
 #---------------------------- Head Elements --------------------------------#
 
@@ -271,8 +289,8 @@ $doc->addFavicon($template . '/favicon.png', 'image/png', 'icon');
 // Style sheets
 $doc->addStyleSheet($template . '/css/screen.css', 'text/css', 'screen');
 
-// Override style sheet returned from our template helper
-$cssFile = $styleOverride->getIncludeFile();
-if ($cssFile) {
-	$doc->addStyleSheet($cssFile, 'text/css', 'screen');
+// Dynamic style sheet returned from our template helper
+$styleSheet =& $styleSheet->getIncludeFile();
+if ($styleSheet) {
+	$doc->addStyleSheet($styleSheet, 'text/css', 'screen');
 }
