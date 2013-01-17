@@ -4,8 +4,8 @@ if ( ! defined('CmodMainMenuXMLCallbackDefined') )
 {
 function CmodMainMenuXMLCallback(&$node, $args)
 {
-	$user	= &JFactory::getUser();
-	$menu	= &JSite::getMenu();
+	$user	=& JFactory::getUser();
+	$menu	=& JSite::getMenu();
 	$active	= $menu->getActive();
 	$path	= isset($active) ? array_reverse($active->tree) : null;
 
