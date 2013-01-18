@@ -25,9 +25,11 @@ $header = JPATH_THEMES . '/' . $this->template . '/layouts/header.php';
 $footer = JPATH_THEMES . '/' . $this->template . '/layouts/footer.php';
 
 // Remove MooTools and core scripts
+/*
 unset($doc->_scripts[$this->baseurl . '/media/system/js/mootools.js']);
 unset($doc->_scripts[$this->baseurl . '/plugins/system/mtupgrade/mootools.js']);
 unset($doc->_scripts[$this->baseurl . '/media/system/js/caption.js']);
+*/
 
 #----------------------------- Moldule Counts -------------------------#
 
