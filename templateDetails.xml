@@ -115,6 +115,12 @@
 		       type="menuitems"
 		       label="Menu Assignment"
 		       description="Select the menu items to assign this layout to"/>
+		<param type="panel"
+		       title="Video Layout"/>
+		<param name="video"
+		       type="menuitems"
+		       label="Menu Assignment"
+		       description="Select the menu items to assign this layout to"/>
 		<param type="panels"/>
 	</params>
 

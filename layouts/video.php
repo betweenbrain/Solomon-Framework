@@ -11,6 +11,8 @@
  * License    GNU GPL v3 or later
  */
 
+$doc->addStyleSheet($template . '/css/video.css', 'text/css', 'screen');
+
 // Load common header
 if (JFile::exists($header)) {
 	include $header;

@@ -221,6 +221,7 @@ $layout->includeFile = array();
 $twoColumn           = $this->params->get('twoColumn');
 $oneThird            = $this->params->get('oneThird');
 $twoThird            = $this->params->get('twoThird');
+$video               = $this->params->get('video');
 
 /**
  * Function to check if the currently menu item matches the supplied condition
@@ -253,6 +254,8 @@ if (isLayout($twoColumn)) {
 	$layout->includeFile[] = $template . '/layouts/oneThird.php';
 } elseif (isLayout($twoThird)) {
 	$layout->includeFile[] = $template . '/layouts/twoThird.php';
+} elseif (isLayout($video)) {
+	$layout->includeFile[] = $template . '/layouts/video.php';
 }
 // Non-parameter menu item specific layouts
 $layout->includeFile[] = $template . '/layouts/item/' . $itemAlias . '.php';
