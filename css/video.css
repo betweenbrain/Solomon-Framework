@@ -15,5 +15,15 @@ body {
 	background : #fff;
 	color      : #444;
 	width      : 900px;
-	margin: 0 auto;
+	margin     : 0 auto;
 }
+
+/* *
+ * K2 Overrides
+ */
+
+/* Set narrow width to hide stars 1-4 */
+.itemratinglist {
+	width : 25px;
+}
+
