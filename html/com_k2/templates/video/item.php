@@ -39,7 +39,7 @@ defined('_JEXEC') or die;
 		</span>
 		<?php endif; ?>
 
-		{<?php echo $this->item->extraFields->VideoProvider->value ;?>|<?php echo $this->item->extraFields->VideoID->value ;?>}
+		{<?php echo $this->item->extraFields->VideoProvider->value ;?> <?php echo $this->item->extraFields->VideoID->value ;?>}
 
 	  <?php if($this->item->params->get('itemTitle')): ?>
 	  <!-- Item title -->
