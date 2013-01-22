@@ -182,7 +182,7 @@ defined('_JEXEC') or die;
 		<div class="itemRatingForm">
 			<ul class="itemRatingList">
 				<li class="itemCurrentRating" id="itemCurrentRating<?php echo $this->item->id; ?>" style="width:<?php echo $this->item->votingPercentage; ?>%;"></li>
-				<li><a href="#" rel="<?php echo $this->item->id; ?>" title="<?php echo JText::_('K2_5_STARS_OUT_OF_5'); ?>" class="five-stars">5</a></li>
+				<li><a href="#" rel="<?php echo $this->item->id; ?>" title="<?php echo JText::_('Mark as Popular'); ?>" class="five-stars">5</a></li>
 			</ul>
 			<span><?php echo JText::_('Mark as Popular'); ?></span>
 			<div class="clr"></div>
