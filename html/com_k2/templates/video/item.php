@@ -1,4 +1,4 @@
-<?php
+<?php defined('_JEXEC') or die;
 /**
  * @version		$Id: item.php 1766 2012-11-22 14:10:24Z lefteris.kavadas $
  * @package		K2
@@ -7,10 +7,9 @@
  * @license		GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
  */
 
-// no direct access
-defined('_JEXEC') or die;
-
 ?>
+
+<h1>Video K2 Template - Item View</h1>
 
 <?php if(JRequest::getInt('print')==1): ?>
 <!-- Print button at the top of the print page only -->
@@ -39,7 +38,20 @@ defined('_JEXEC') or die;
 		</span>
 		<?php endif; ?>
 
-		{<?php echo $this->item->extraFields->VideoProvider->value ;?> <?php echo $this->item->extraFields->VideoID->value ;?>}
+		<!-- K2 Plugin: K2VideoData -->
+		<?php
+		$videoProvider = $this->item->videoProvider;
+		$videoID       = $this->item->videoID;
+		$videoImage    = $this->item->videoImage;
+
+		if ($videoProvider && $videoID) {
+			echo '{' . $videoProvider . ' ' . $videoID . '}';
+		}
+		?>
+
+		<?php if ($videoImage) : ?>
+		<img src="<?php echo  $this->item->videoImage;?>" />
+		<?php endif;?>
 
 	  <?php if($this->item->params->get('itemTitle')): ?>
 	  <!-- Item title -->
@@ -104,11 +116,11 @@ defined('_JEXEC') or die;
 				<span class="itemTextResizerTitle"><?php echo JText::_('K2_FONT_SIZE'); ?></span>
 				<a href="#" id="fontDecrease">
 					<span><?php echo JText::_('K2_DECREASE_FONT_SIZE'); ?></span>
-					<img src="<?php echo JURI::root(true); ?>/components/com_k2/images/system/blank.gif" alt="<?php echo JText::_('K2_DECREASE_FONT_SIZE'); ?>" />
+					<img src="<?php echo JURI::root(TRUE); ?>/components/com_k2/images/system/blank.gif" alt="<?php echo JText::_('K2_DECREASE_FONT_SIZE'); ?>" />
 				</a>
 				<a href="#" id="fontIncrease">
 					<span><?php echo JText::_('K2_INCREASE_FONT_SIZE'); ?></span>
-					<img src="<?php echo JURI::root(true); ?>/components/com_k2/images/system/blank.gif" alt="<?php echo JText::_('K2_INCREASE_FONT_SIZE'); ?>" />
+					<img src="<?php echo JURI::root(TRUE); ?>/components/com_k2/images/system/blank.gif" alt="<?php echo JText::_('K2_INCREASE_FONT_SIZE'); ?>" />
 				</a>
 			</li>
 			<?php endif; ?>
