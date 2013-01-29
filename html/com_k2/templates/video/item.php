@@ -43,7 +43,10 @@
 		$videoProvider = $this->item->videoProvider;
 		$videoID       = $this->item->videoID;
 		$videoImage    = $this->item->videoImage;
+		$videoDuration = $this->item->videoDuration;
+		?>
 
+		<?php
 		if ($videoProvider && $videoID) {
 			echo '{' . $videoProvider . ' ' . $videoID . '}';
 		}
@@ -52,6 +55,10 @@
 		<?php if ($videoImage) : ?>
 		<img src="<?php echo  $this->item->videoImage;?>" />
 		<?php endif;?>
+
+		<?php if ($videoDuration) : ?>
+		<p><?php echo $videoDuration ?></p>
+		<?php endif; ?>
 
 	  <?php if($this->item->params->get('itemTitle')): ?>
 	  <!-- Item title -->
