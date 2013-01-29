@@ -25,8 +25,30 @@ defined('_JEXEC') or die;
       <!-- Plugins: BeforeDisplay -->
       <?php echo $item->event->BeforeDisplay; ?>
 
-      <!-- K2 Plugins: K2BeforeDisplay -->
-      <?php echo $item->event->K2BeforeDisplay; ?>
+	<!-- K2 Plugins: K2BeforeDisplay -->
+	<?php echo $item->event->K2BeforeDisplay; ?>
+
+	<!-- K2 Plugin: K2VideoData -->
+	<?php
+	$videoProvider = $item->videoProvider;
+	$videoID       = $item->videoID;
+	$videoImage    = $item->videoImage;
+	$videoDuration = $item->videoDuration;
+	?>
+
+	<?php
+	if ($videoProvider && $videoID) {
+	    echo '{' . $videoProvider . ' ' . $videoID . '}';
+	}
+	?>
+
+	<?php if ($videoImage) : ?>
+	<img src="<?php echo  $item->videoImage;?>" />
+	<?php endif;?>
+
+	<?php if ($videoDuration) : ?>
+	<p><?php echo $videoDuration ?></p>
+	<?php endif; ?>
 
       <?php if($params->get('itemAuthorAvatar')): ?>
       <a class="k2Avatar moduleItemAuthorAvatar" rel="author" href="<?php echo $item->authorLink; ?>">
