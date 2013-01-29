@@ -12,6 +12,8 @@ defined('_JEXEC') or die;
 
 ?>
 
+<h1>Default K2 Template - Category View</h1>
+
 <!-- Start K2 Category Layout -->
 <div id="k2Container" class="itemListView<?php if($this->params->get('pageclass_sfx')) echo ' '.$this->params->get('pageclass_sfx'); ?>">
 

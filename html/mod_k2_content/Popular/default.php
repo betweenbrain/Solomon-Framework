@@ -16,10 +16,13 @@
 	<?php endif; ?>
 
 	<?php if (count($items)): ?>
-	<ul>
+	<ol>
 		<?php foreach ($items as $key => $item): ?>
 		<li class="<?php
 			echo ($key % 2) ? "odd" : "even";
+			if ($key == 0) {
+				echo ' popular';
+			}
 			if (count($items) == $key + 1) {
 				echo ' last';
 			}
@@ -37,9 +40,11 @@
 			$videoDuration = $item->videoDuration;
 			?>
 
+
 			<a href="<?php echo $item->link; ?>"><img src="<?php echo  $item->videoImage;?>" title="<?php echo $item->title; ?>" />
-				<p class="details"><?php echo $item->title . '<span class="duration">' . $videoDuration . '</span>'?></p>
+				<p class="details"><?php echo '<span class="order">' . ($key + 1) . '</span>' . $item->title . '<span class="duration">' . $videoDuration . '</span>'?></p>
 			</a>
+
 
 			<!-- Plugins: AfterDisplayTitle -->
 			<?php echo $item->event->AfterDisplayTitle; ?>
@@ -66,7 +71,7 @@
 			<?php echo $item->event->K2AfterDisplay; ?>
 		</li>
 		<?php endforeach; ?>
-	</ul>
+	</ol>
 	<?php endif; ?>
 
 </div>

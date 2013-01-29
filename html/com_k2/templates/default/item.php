@@ -12,6 +12,8 @@ defined('_JEXEC') or die;
 
 ?>
 
+<h1>Default K2 Template - Item View</h1>
+
 <?php if(JRequest::getInt('print')==1): ?>
 <!-- Print button at the top of the print page only -->
 <a class="itemPrintThisPage" rel="nofollow" href="#" onclick="window.print();return false;">
