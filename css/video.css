@@ -14,7 +14,7 @@
 body {
 	background : #fff;
 	color      : #444;
-	width      : 900px;
+	width      : 902px;
 	margin     : 0 auto;
 }
 
@@ -28,7 +28,8 @@ body {
 }
 
 /* K2 Content Module */
-.k2ItemsBlock ol {
+.k2ItemsBlock ol,
+.k2ItemsBlock ul {
 	margin-left  : 0;
 	padding-left : 0;
 }
@@ -36,26 +37,40 @@ body {
 .k2ItemsBlock li {
 	list-style-type : none;
 	float           : left;
+	height          : 162px;
+	overflow        : hidden;
+	padding-right: 15px;
+}
+
+.k2ItemsBlock li.featured {
+	height : 333px;
 }
 
 .k2ItemsBlock li img {
-	width  : 281px;
+	/* 288px - 8px for border */
+	width  : 280px;
 	border : 4px solid #ddd;
 }
 
-.k2ItemsBlock li.popular img {
-	width : 594px;
+.k2ItemsBlock li.featured img {
+	/* 592px - 8px for border */
+	width : 584px;
 }
 
 .k2ItemsBlock li .details {
+	width       : 280px;
 	color       : #fff;
 	font-weight : bold;
 	font-size   : 20px;
 	position    : relative;
-	top         : -45px;
+	top         : -37px;
 	left        : 15px;
 	padding     : 0;
 	margin      : 0;
+}
+
+.k2ItemsBlock.featured li .details {
+	top : -45px;
 }
 
 .k2ItemsBlock li .details .order {
