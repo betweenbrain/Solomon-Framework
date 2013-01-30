@@ -15,6 +15,20 @@ K2HelperUtilities::setDefaultImage($this->item, 'itemlist', $this->params);
 
 ?>
 
+<!-- K2 Plugin: K2VideoData -->
+<?php
+$videoImage    = $this->item->videoImage;
+$videoDuration = $this->item->videoDuration;
+?>
+
+<?php if ($videoImage) : ?>
+<img src="<?php echo  $this->item->videoImage;?>" />
+<?php endif;?>
+
+<?php if ($videoDuration) : ?>
+<p><?php echo $videoDuration ?></p>
+<?php endif; ?>
+
 <!-- Start K2 Item Layout -->
 <div class="catItemView group<?php echo ucfirst($this->item->itemGroup); ?><?php echo ($this->item->featured) ? ' catItemIsFeatured' : ''; ?><?php if ($this->item->params->get('pageclass_sfx')) {
 	echo ' ' . $this->item->params->get('pageclass_sfx');
