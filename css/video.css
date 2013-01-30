@@ -28,6 +28,13 @@ body {
 }
 
 /* K2 Content Module */
+.k2ItemsBlock {
+	position: relative;
+	padding-top: 16px;
+	outline: none;
+}
+
+
 .k2ItemsBlock ol,
 .k2ItemsBlock ul {
 	margin-left  : 0;
@@ -44,6 +51,12 @@ body {
 
 .k2ItemsBlock li.featured {
 	height : 333px;
+}
+
+.k2ItemsBlock li a,
+.k2ItemsBlock li a:active,
+.k2ItemsBlock li a:visited {
+	text-decoration: none;
 }
 
 .k2ItemsBlock li img {
@@ -63,15 +76,15 @@ body {
 	font-weight : bold;
 	font-size   : 20px;
 	position    : relative;
-	top         : -37px;
+	top         : -45px;
 	left        : 15px;
 	padding     : 0;
 	margin      : 0;
 	text-shadow: 1px 1px 3px #000;
 }
 
-.featured.k2ItemsBlock li .details {
-	top : -50px;
+.featured.k2ItemsBlock li.featured .details {
+	top : -58px;
 }
 
 .featured.k2ItemsBlock li.even {
@@ -86,6 +99,29 @@ body {
 .k2ItemsBlock li .details .duration {
 	font-size    : 15px;
 	padding-left : 5px;
+}
+
+.k2ItemsBlock .carousel-previous,
+.k2ItemsBlock .carousel-next {
+	z-index: 2;
+	position: absolute;
+	top: 0;
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	width : 16px;
+	height: 0;
+	padding-top: 26px;
+}
+
+.k2ItemsBlock .carousel-next {
+	right: 0;
+	background : url("../images/right-arrow.png") 50% 100% no-repeat;
+}
+
+.k2ItemsBlock .carousel-previous {
+	right: 24px;
+	background : url("../images/left-arrow.png") 50% 100% no-repeat;
 }
 
 /**
