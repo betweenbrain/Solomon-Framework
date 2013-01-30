@@ -21,7 +21,7 @@
 		<li class="<?php
 			echo ($key % 2) ? "odd" : "even";
 			if ($key == 0) {
-				echo ' popular';
+				echo ' featured';
 			}
 			if (count($items) == $key + 1) {
 				echo ' last';
