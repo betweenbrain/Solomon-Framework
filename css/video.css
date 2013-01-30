@@ -46,11 +46,16 @@ body {
 	float           : left;
 	height          : 162px;
 	overflow        : hidden;
-	padding-right: 15px;
+	padding-right: 27px;
+}
+
+.k2ItemsBlock li li {
+	padding-right: 0;
 }
 
 .k2ItemsBlock li.featured {
 	height : 333px;
+	padding-right: 13px;
 }
 
 .k2ItemsBlock li a,
@@ -60,14 +65,14 @@ body {
 }
 
 .k2ItemsBlock li img {
-	/* 288px - 8px for border */
-	width  : 280px;
+	/* 280px - 8px for border */
+	width  : 272px;
 	border : 4px solid #ddd;
 }
 
 .k2ItemsBlock li.featured img {
-	/* 592px - 8px for border */
-	width : 584px;
+	/* 595px - 8px for border */
+	width : 587px;
 }
 
 .k2ItemsBlock li .details {
