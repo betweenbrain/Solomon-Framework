@@ -19,7 +19,6 @@ if (JFile::exists($header)) {
 }
 
 ?>
-<h1>Video Layout</h1>
 <?php if ($this->countModules('nav')) : ?>
 <nav id="nav" class="clear clearfix">
 	<jdoc:include type="modules" name="nav" style="raw" />
