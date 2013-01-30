@@ -1,4 +1,4 @@
-<?php
+<?php defined('_JEXEC') or die;
 /**
  * @version		$Id: category.php 1618 2012-09-21 11:23:08Z lefteris.kavadas $
  * @package		K2
@@ -7,9 +7,19 @@
  * @license		GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
  */
 
-// no direct access
-defined('_JEXEC') or die;
-
+$doc = JFactory::getDocument();
+$doc->addScript(JURI::base(TRUE) . '/templates/cloaked-sansa/js/jquery.carousel.min.js');
+$js = '(function ($) {
+            $().ready(function () {
+                $("div.k2ItemsBlock").carousel({
+                nextBtn          : "<a class=\"next\" title=\"Next\">Next</a>",
+				prevBtn          : "<a class=\"prev\" title=\"Previous\">Previous</a>",
+                });
+            });
+        })(jQuery)';
+// Minify JS
+$js = preg_replace(array('/\s{2,}+/', '/\t/', '/\n/'), '', $js);
+$doc->addScriptDeclaration($js);
 ?>
 
 <h1>Video K2 Template - Category View</h1>
@@ -29,7 +39,7 @@ defined('_JEXEC') or die;
 	<div class="k2FeedIcon">
 		<a href="<?php echo $this->feed; ?>" title="<?php echo JText::_('K2_SUBSCRIBE_TO_THIS_RSS_FEED'); ?>">
 			<span><?php echo JText::_('K2_SUBSCRIBE_TO_THIS_RSS_FEED'); ?></span>
-		</a>
+		</a>jQuery Carousel 0.9.8
 		<div class="clr"></div>
 	</div>
 	<?php endif; ?>
