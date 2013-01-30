@@ -67,10 +67,15 @@ body {
 	left        : 15px;
 	padding     : 0;
 	margin      : 0;
+	text-shadow: 1px 1px 3px #000;
 }
 
-.k2ItemsBlock.featured li .details {
-	top : -45px;
+.featured.k2ItemsBlock li .details {
+	top : -50px;
+}
+
+.featured.k2ItemsBlock li.even {
+	clear: left;
 }
 
 .k2ItemsBlock li .details .order {
