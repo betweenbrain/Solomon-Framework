@@ -22,8 +22,6 @@ $js = preg_replace(array('/\s{2,}+/', '/\t/', '/\n/'), '', $js);
 $doc->addScriptDeclaration($js);
 ?>
 
-<h1>Video K2 Template - Category View</h1>
-
 <!-- Start K2 Category Layout -->
 <div id="k2Container" class="itemListView<?php if($this->params->get('pageclass_sfx')) echo ' '.$this->params->get('pageclass_sfx'); ?>">
 
