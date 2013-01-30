@@ -9,7 +9,7 @@
 
 ?>
 
-<div id="k2ModuleBox<?php echo $module->id; ?>" class="k2ItemsBlock<?php if ($params->get('moduleclass_sfx')) {	echo ' ' . $params->get('moduleclass_sfx');} ?>">
+<div id="k2ModuleBox<?php echo $module->id; ?>" class="featured k2ItemsBlock<?php if ($params->get('moduleclass_sfx')) {echo ' ' . $params->get('moduleclass_sfx');} ?>">
 
 	<?php if ($params->get('itemPreText')): ?>
 	<p class="modulePretext"><?php echo $params->get('itemPreText'); ?></p>
@@ -18,58 +18,39 @@
 	<?php if (count($items)): ?>
 	<ol>
 		<?php foreach ($items as $key => $item): ?>
-		<li class="<?php
-			echo ($key % 2) ? "odd" : "even";
-			if ($key == 0) {
-				echo ' featured';
-			}
-			if (count($items) == $key + 1) {
-				echo ' last';
-			}
-			?>">
-
-			<!-- Plugins: BeforeDisplay -->
+		<?php // test if not leading item and is odd
+		if (($key != 0) && ($key & 1)) : ?>
+		<li class="block">
+			<ul>
+		<?php endif ?>
+		<li class="<?php echo ($key % 2) ? "odd" : "even"; if ($key == 0) { echo ' featured'; }    if (count($items) == $key + 1) {echo ' last';}?>">
 			<?php echo $item->event->BeforeDisplay; ?>
-
-			<!-- K2 Plugins: K2BeforeDisplay -->
 			<?php echo $item->event->K2BeforeDisplay; ?>
 
-			<!-- K2 Plugin: K2VideoData -->
 			<?php
 			$videoImage    = $item->videoImage;
 			$videoDuration = $item->videoDuration;
 			?>
 
-
 			<a href="<?php echo $item->link; ?>"><img src="<?php echo  $item->videoImage;?>" title="<?php echo $item->title; ?>" />
 				<p class="details"><?php echo '<span class="order">' . ($key + 1) . '</span>' . $item->title . '<span class="duration">' . $videoDuration . '</span>'?></p>
 			</a>
-
-
-			<!-- Plugins: AfterDisplayTitle -->
 			<?php echo $item->event->AfterDisplayTitle; ?>
-
-			<!-- K2 Plugins: K2AfterDisplayTitle -->
 			<?php echo $item->event->K2AfterDisplayTitle; ?>
-
-			<!-- Plugins: BeforeDisplayContent -->
 			<?php echo $item->event->BeforeDisplayContent; ?>
-
-			<!-- K2 Plugins: K2BeforeDisplayContent -->
 			<?php echo $item->event->K2BeforeDisplayContent; ?>
-
-			<!-- Plugins: AfterDisplayContent -->
 			<?php echo $item->event->AfterDisplayContent; ?>
-
-			<!-- K2 Plugins: K2AfterDisplayContent -->
 			<?php echo $item->event->K2AfterDisplayContent; ?>
-
-			<!-- Plugins: AfterDisplay -->
 			<?php echo $item->event->AfterDisplay; ?>
-
-			<!-- K2 Plugins: K2AfterDisplay -->
 			<?php echo $item->event->K2AfterDisplay; ?>
 		</li>
+
+		<?php // test if not leading item and is even
+		if (($key != 0) && ($key % 2 == 0)) : ?>
+			</ul>
+		</li>
+		<?php endif ?>
+
 		<?php endforeach; ?>
 	</ol>
 	<?php endif; ?>
