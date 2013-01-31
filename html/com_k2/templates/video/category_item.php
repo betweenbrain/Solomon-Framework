@@ -10,6 +10,10 @@
 // no direct access
 defined('_JEXEC') or die;
 
+// Load template language file for override
+$lang =& JFactory::getLanguage();
+$lang->load('tpl_cloaked_sansa', JPATH_SITE);
+
 // Define default image size (do not change)
 K2HelperUtilities::setDefaultImage($this->item, 'itemlist', $this->params);
 
