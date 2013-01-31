@@ -7,9 +7,13 @@
  * @license		GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
  */
 
-$doc = JFactory::getDocument();
-$doc->addScript(JURI::base(TRUE) . '/templates/cloaked-sansa/js/jquery.carousel.min.js');
-$js = '(function ($) {
+// Load JS only K2 Content module is published to this page
+jimport('joomla.application.module.helper');
+$module = JModuleHelper::isEnabled('k2_content');
+if ($module) {
+	$doc = JFactory::getDocument();
+	$doc->addScript(JURI::base(TRUE) . '/templates/cloaked-sansa/js/jquery.carousel.min.js');
+	$js = '(function ($) {
             $().ready(function () {
                 $("div.k2ItemsBlock").carousel({
                 nextBtn          : "<a class=\"next\" title=\"Next\">Next</a>",
@@ -18,8 +22,9 @@ $js = '(function ($) {
             });
         })(jQuery)';
 // Minify JS
-$js = preg_replace(array('/\s{2,}+/', '/\t/', '/\n/'), '', $js);
-$doc->addScriptDeclaration($js);
+	$js = preg_replace(array('/\s{2,}+/', '/\t/', '/\n/'), '', $js);
+	$doc->addScriptDeclaration($js);
+}
 ?>
 
 <!-- Start K2 Category Layout -->
@@ -37,7 +42,7 @@ $doc->addScriptDeclaration($js);
 	<div class="k2FeedIcon">
 		<a href="<?php echo $this->feed; ?>" title="<?php echo JText::_('K2_SUBSCRIBE_TO_THIS_RSS_FEED'); ?>">
 			<span><?php echo JText::_('K2_SUBSCRIBE_TO_THIS_RSS_FEED'); ?></span>
-		</a>jQuery Carousel 0.9.8
+		</a>
 		<div class="clr"></div>
 	</div>
 	<?php endif; ?>
