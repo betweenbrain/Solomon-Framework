@@ -156,14 +156,15 @@ if ($module) {
 			<?php foreach($this->leading as $key=>$item): ?>
 
 			<?php
+			$first = fmod(($key+1),($this->params->get('num_leading_columns')));
 			// Define a CSS class for the last container on each row
 			if( (($key+1)%($this->params->get('num_leading_columns'))==0) || count($this->leading)<$this->params->get('num_leading_columns') )
-				$lastContainer= ' itemContainerLast';
+				$lastContainer= ' last';
 			else
 				$lastContainer='';
 			?>
 			
-			<div class="itemContainer<?php echo $lastContainer; ?>"<?php echo (count($this->leading)==1) ? '' : ' style="width:'.number_format(100/$this->params->get('num_leading_columns'), 1).'%;"'; ?>>
+			<div class="itemContainer<?php echo $lastContainer; if($first == 1) echo ' first' ?>"<?php echo (count($this->leading)==1) ? '' : ' style="width:'.number_format(100/$this->params->get('num_leading_columns'), 1).'%;"'; ?>>
 				<?php
 					// Load category_item.php by default
 					$this->item=$item;
