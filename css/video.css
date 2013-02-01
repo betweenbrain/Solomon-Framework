@@ -78,6 +78,7 @@ body {
 	width : 595px;
 }
 
+.itemContainer .title,
 .k2ItemsBlock .title {
 	width       : 265px;
 	color       : #fff;
@@ -90,6 +91,7 @@ body {
 	margin      : 0;
 	text-shadow : 1px 1px 3px #000;
 	white-space : nowrap;
+	overflow    : hidden;
 }
 
 .featured.k2ItemsBlock .title {
