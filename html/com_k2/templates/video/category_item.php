@@ -25,8 +25,7 @@ $videoDuration = $this->item->videoDuration;
 } ?>">
 	<a href="<?php echo $this->item->link; ?>">
 		<img src="<?php echo  $this->item->videoImage;?>" />
-		<?php echo $this->item->title; ?>
-		<p><?php echo $videoDuration ?></p>
+		<p class="title"><?php echo $this->item->title; ?> <?php echo $videoDuration ?></p>
 	</a>
 
 <div class="details">
