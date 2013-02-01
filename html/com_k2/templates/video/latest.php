@@ -12,11 +12,11 @@ defined('_JEXEC') or die;
 
 ?>
 
-<!-- Start K2 Latest Layout -->
+
 <div id="k2Container" class="latestView<?php if($this->params->get('pageclass_sfx')) echo ' '.$this->params->get('pageclass_sfx'); ?>">
 
 	<?php if($this->params->get('show_page_title')): ?>
-	<!-- Page title -->
+
 	<div class="componentheading<?php echo $this->params->get('pageclass_sfx')?>">
 		<?php echo $this->escape($this->params->get('page_title')); ?>
 	</div>
@@ -28,10 +28,10 @@ defined('_JEXEC') or die;
 		<?php if($this->source=='categories'): $category=$block; ?>
 		
 		<?php if($this->params->get('categoryFeed') || $this->params->get('categoryImage') || $this->params->get('categoryTitle') || $this->params->get('categoryDescription')): ?>
-		<!-- Start K2 Category block -->
+
 		<div class="latestItemsCategory">
 			<?php if($this->params->get('categoryFeed')): ?>
-			<!-- RSS feed icon -->
+
 			<div class="k2FeedIcon">
 				<a href="<?php echo $category->feed; ?>" title="<?php echo JText::_('K2_SUBSCRIBE_TO_THIS_RSS_FEED'); ?>">
 					<span><?php echo JText::_('K2_SUBSCRIBE_TO_THIS_RSS_FEED'); ?></span>
@@ -56,21 +56,21 @@ defined('_JEXEC') or die;
 	
 			<div class="clr"></div>
 	
-			<!-- K2 Plugins: K2CategoryDisplay -->
+
 			<?php echo $category->event->K2CategoryDisplay; ?>
 			<div class="clr"></div>
 		</div>
-		<!-- End K2 Category block -->
+
 		<?php endif; ?>
 		
 		<?php else: $user=$block; ?>
 		
 		<?php if ($this->params->get('userFeed') || $this->params->get('userImage') || $this->params->get('userName') || $this->params->get('userDescription') || $this->params->get('userURL') || $this->params->get('userEmail')): ?>
-		<!-- Start K2 User block -->
+
 		<div class="latestItemsUser">
 	
 			<?php if($this->params->get('userFeed')): ?>
-			<!-- RSS feed icon -->
+
 			<div class="k2FeedIcon">
 				<a href="<?php echo $user->feed; ?>" title="<?php echo JText::_('K2_SUBSCRIBE_TO_THIS_RSS_FEED'); ?>">
 					<span><?php echo JText::_('K2_SUBSCRIBE_TO_THIS_RSS_FEED'); ?></span>
@@ -113,12 +113,12 @@ defined('_JEXEC') or die;
 	
 			<div class="clr"></div>
 		</div>
-		<!-- End K2 User block -->
+
 		<?php endif; ?>
 		
 		<?php endif; ?>
 
-		<!-- Start Items list -->
+
 		<div class="latestItemList">
 		<?php if($this->params->get('latestItemsDisplayEffect')=="first"): ?>
 	
@@ -146,7 +146,7 @@ defined('_JEXEC') or die;
 	
 		<?php endif; ?>
 		</div>
-		<!-- End Item list -->
+
 
 	</div>
 
@@ -157,4 +157,4 @@ defined('_JEXEC') or die;
 	<?php endforeach; ?>
 	<div class="clr"></div>
 </div>
-<!-- End K2 Latest Layout -->
+

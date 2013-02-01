@@ -99,7 +99,7 @@ $document->addScriptDeclaration("
 									</td>
 									<td class="adminK2RightCol">
 										<?php if($this->params->get('taggingSystem')): ?>
-										<!-- Free tagging -->
+
 										<ul class="tags">
 											<?php if(isset($this->row->tags) && count($this->row->tags)): ?>
 											<?php foreach($this->row->tags as $tag): ?>
@@ -117,7 +117,7 @@ $document->addScriptDeclaration("
 										</ul>
 										<span class="k2Note"> <?php echo JText::_('K2_WRITE_A_TAG_AND_PRESS_RETURN_OR_COMMA_TO_ADD_IT'); ?> </span>
 										<?php else: ?>
-										<!-- Selection based tagging -->
+
 										<?php if( !$this->params->get('lockTags') || $this->user->gid>23): ?>
 										<div style="float:left;">
 											<input type="text" name="tag" id="tag" />
@@ -166,7 +166,7 @@ $document->addScriptDeclaration("
 								<?php endif; ?>
 							</table>
 							<ul id="k2ExtraFieldsValidationResults"></ul>
-							<!-- Tabs start here -->
+
 							<div class="simpleTabs" id="k2Tabs">
 								<ul class="simpleTabsNavigation">
 									<li id="tabContent"><a href="#k2Tab1"><?php echo JText::_('K2_CONTENT'); ?></a></li>
@@ -190,7 +190,7 @@ $document->addScriptDeclaration("
 									<?php endif; ?>
 								</ul>
 								
-								<!-- Tab content -->
+
 								<div class="simpleTabsContent" id="k2Tab1">
 									<?php if($this->params->get('mergeEditors')): ?>
 									<div class="k2ItemFormEditor"> <?php echo $this->text; ?>
@@ -222,7 +222,7 @@ $document->addScriptDeclaration("
 									<div class="clr"></div>
 								</div>
 								<?php if ($this->params->get('showImageTab')): ?>
-								<!-- Tab image -->
+
 								<div class="simpleTabsContent" id="k2Tab2">
 									<table class="admintable">
 										<tr>
@@ -286,7 +286,7 @@ $document->addScriptDeclaration("
 								</div>
 								<?php endif; ?>
 								<?php if ($this->params->get('showImageGalleryTab')): ?>
-								<!-- Tab image gallery -->
+
 								<div class="simpleTabsContent" id="k2Tab3">
 									<?php if ($this->lists['checkSIG']): ?>
 									<table class="admintable" id="item_gallery_content">
@@ -355,7 +355,7 @@ $document->addScriptDeclaration("
 								</div>
 								<?php endif; ?>
 								<?php if ($this->params->get('showVideoTab')): ?>
-								<!-- Tab video -->
+
 								<div class="simpleTabsContent" id="k2Tab4">
 									<?php if ($this->lists['checkAllVideos']): ?>
 									<table class="admintable" id="item_video_content">
@@ -523,7 +523,7 @@ $document->addScriptDeclaration("
 								</div>
 								<?php endif; ?>
 								<?php if ($this->params->get('showExtraFieldsTab')): ?>
-								<!-- Tab extra fields -->
+
 								<div class="simpleTabsContent" id="k2Tab5">
 									<div id="extraFieldsContainer">
 										<?php if (count($this->extraFields)): ?>
@@ -591,7 +591,7 @@ $document->addScriptDeclaration("
 								</div>
 								<?php endif; ?>
 								<?php if ($this->params->get('showAttachmentsTab')): ?>
-								<!-- Tab attachements -->
+
 								<div class="simpleTabsContent" id="k2Tab6">
 									<div class="itemAttachments">
 										<?php if (count($this->row->attachments)): ?>
@@ -654,7 +654,7 @@ $document->addScriptDeclaration("
 								</div>
 								<?php endif; ?>
 								<?php if(count(array_filter($this->K2PluginsItemOther)) && $this->params->get('showK2Plugins')): ?>
-								<!-- Tab other plugins -->
+
 								<div class="simpleTabsContent" id="k2Tab7">
 									<div class="itemPlugins">
 										<?php foreach($this->K2PluginsItemOther as $K2Plugin): ?>
@@ -669,7 +669,7 @@ $document->addScriptDeclaration("
 								</div>
 								<?php endif; ?>
 							</div>
-							<!-- Tabs end here -->
+
 							
 							<input type="hidden" name="isSite" value="<?php echo (int)$this->mainframe->isSite(); ?>" />
 							<?php if($this->mainframe->isSite()): ?>

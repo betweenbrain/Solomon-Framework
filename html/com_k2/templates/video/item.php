@@ -10,33 +10,33 @@
 ?>
 
 <?php if(JRequest::getInt('print')==1): ?>
-<!-- Print button at the top of the print page only -->
+
 <a class="itemPrintThisPage" rel="nofollow" href="#" onclick="window.print();return false;">
 	<span><?php echo JText::_('K2_PRINT_THIS_PAGE'); ?></span>
 </a>
 <?php endif; ?>
 
-<!-- Start K2 Item Layout -->
+
 <span id="startOfPageId<?php echo JRequest::getInt('id'); ?>"></span>
 
 <div id="k2Container" class="itemView<?php echo ($this->item->featured) ? ' itemIsFeatured' : ''; ?><?php if($this->item->params->get('pageclass_sfx')) echo ' '.$this->item->params->get('pageclass_sfx'); ?>">
 
-	<!-- Plugins: BeforeDisplay -->
+
 	<?php echo $this->item->event->BeforeDisplay; ?>
 
-	<!-- K2 Plugins: K2BeforeDisplay -->
+
 	<?php echo $this->item->event->K2BeforeDisplay; ?>
 
 	<div class="itemHeader">
 
 		<?php if($this->item->params->get('itemDateCreated')): ?>
-		<!-- Date created -->
+
 		<span class="itemDateCreated">
 			<?php echo JHTML::_('date', $this->item->created , JText::_('K2_DATE_FORMAT_LC2')); ?>
 		</span>
 		<?php endif; ?>
 
-		<!-- K2 Plugin: K2VideoData -->
+
 		<?php
 		$videoProvider = $this->item->videoProvider;
 		$videoID       = $this->item->videoID;
@@ -59,10 +59,10 @@
 		<?php endif; ?>
 
 	  <?php if($this->item->params->get('itemTitle')): ?>
-	  <!-- Item title -->
+
 	  <h2 class="itemTitle">
 			<?php if(isset($this->item->editLink)): ?>
-			<!-- Item edit link -->
+
 			<span class="itemEditLink">
 				<a class="modal" rel="{handler:'iframe',size:{x:990,y:550}}" href="<?php echo $this->item->editLink; ?>">
 					<?php echo JText::_('K2_EDIT_ITEM'); ?>
@@ -73,7 +73,7 @@
 	  	<?php echo $this->item->title; ?>
 
 	  	<?php if($this->item->params->get('itemFeaturedNotice') && $this->item->featured): ?>
-	  	<!-- Featured flag -->
+
 	  	<span>
 		  	<sup>
 		  		<?php echo JText::_('K2_FEATURED'); ?>
@@ -85,7 +85,7 @@
 	  <?php endif; ?>
 
 		<?php if($this->item->params->get('itemAuthor')): ?>
-		<!-- Item Author -->
+
 		<span class="itemAuthor">
 			<?php echo K2HelperUtilities::writtenBy($this->item->author->profile->gender); ?>&nbsp;
 			<?php if(empty($this->item->created_by_alias)): ?>
@@ -98,10 +98,10 @@
 
   </div>
 
-  <!-- Plugins: AfterDisplayTitle -->
+
   <?php echo $this->item->event->AfterDisplayTitle; ?>
 
-  <!-- K2 Plugins: K2AfterDisplayTitle -->
+
   <?php echo $this->item->event->K2AfterDisplayTitle; ?>
 
 	<?php if(
@@ -116,7 +116,7 @@
   <div class="itemToolbar">
 		<ul>
 			<?php if($this->item->params->get('itemFontResizer')): ?>
-			<!-- Font Resizer -->
+
 			<li>
 				<span class="itemTextResizerTitle"><?php echo JText::_('K2_FONT_SIZE'); ?></span>
 				<a href="#" id="fontDecrease">
@@ -131,7 +131,7 @@
 			<?php endif; ?>
 
 			<?php if($this->item->params->get('itemPrintButton') && !JRequest::getInt('print')): ?>
-			<!-- Print Button -->
+
 			<li>
 				<a class="itemPrintLink" rel="nofollow" href="<?php echo $this->item->printLink; ?>" onclick="window.open(this.href,'printWindow','width=900,height=600,location=no,menubar=no,resizable=yes,scrollbars=yes'); return false;">
 					<span><?php echo JText::_('K2_PRINT'); ?></span>
@@ -140,7 +140,7 @@
 			<?php endif; ?>
 
 			<?php if($this->item->params->get('itemEmailButton') && !JRequest::getInt('print')): ?>
-			<!-- Email Button -->
+
 			<li>
 				<a class="itemEmailLink" rel="nofollow" href="<?php echo $this->item->emailLink; ?>" onclick="window.open(this.href,'emailWindow','width=400,height=350,location=no,menubar=no,resizable=no,scrollbars=no'); return false;">
 					<span><?php echo JText::_('K2_EMAIL'); ?></span>
@@ -149,31 +149,31 @@
 			<?php endif; ?>
 
 			<?php if($this->item->params->get('itemSocialButton') && !is_null($this->item->params->get('socialButtonCode', NULL))): ?>
-			<!-- Item Social Button -->
+
 			<li>
 				<?php echo $this->item->params->get('socialButtonCode'); ?>
 			</li>
 			<?php endif; ?>
 
 			<?php if($this->item->params->get('itemVideoAnchor') && !empty($this->item->video)): ?>
-			<!-- Anchor link to item video below - if it exists -->
+
 			<li>
 				<a class="itemVideoLink k2Anchor" href="<?php echo $this->item->link; ?>#itemVideoAnchor"><?php echo JText::_('K2_MEDIA'); ?></a>
 			</li>
 			<?php endif; ?>
 
 			<?php if($this->item->params->get('itemImageGalleryAnchor') && !empty($this->item->gallery)): ?>
-			<!-- Anchor link to item image gallery below - if it exists -->
+
 			<li>
 				<a class="itemImageGalleryLink k2Anchor" href="<?php echo $this->item->link; ?>#itemImageGalleryAnchor"><?php echo JText::_('K2_IMAGE_GALLERY'); ?></a>
 			</li>
 			<?php endif; ?>
 
 			<?php if($this->item->params->get('itemCommentsAnchor') && $this->item->params->get('itemComments') && ( ($this->item->params->get('comments') == '2' && !$this->user->guest) || ($this->item->params->get('comments') == '1')) ): ?>
-			<!-- Anchor link to comments below - if enabled -->
+
 			<li>
 				<?php if(!empty($this->item->event->K2CommentsCounter)): ?>
-					<!-- K2 Plugins: K2CommentsCounter -->
+
 					<?php echo $this->item->event->K2CommentsCounter; ?>
 				<?php else: ?>
 					<?php if($this->item->numOfComments > 0): ?>
@@ -194,7 +194,7 @@
 	<?php endif; ?>
 
 	<?php if($this->item->params->get('itemRating')): ?>
-	<!-- Item Rating -->
+
 	<div class="itemRatingBlock">
 		<div class="itemRatingForm">
 			<ul class="itemRatingList">
@@ -210,14 +210,14 @@
 
   <div class="itemBody">
 
-	  <!-- Plugins: BeforeDisplayContent -->
+
 	  <?php echo $this->item->event->BeforeDisplayContent; ?>
 
-	  <!-- K2 Plugins: K2BeforeDisplayContent -->
+
 	  <?php echo $this->item->event->K2BeforeDisplayContent; ?>
 
 	  <?php if($this->item->params->get('itemImage') && !empty($this->item->image)): ?>
-	  <!-- Item Image -->
+
 	  <div class="itemImageBlock">
 		  <span class="itemImage">
 		  	<a class="modal" rel="{handler: 'image'}" href="<?php echo $this->item->imageXLarge; ?>" title="<?php echo JText::_('K2_CLICK_TO_PREVIEW_IMAGE'); ?>">
@@ -226,12 +226,12 @@
 		  </span>
 
 		  <?php if($this->item->params->get('itemImageMainCaption') && !empty($this->item->image_caption)): ?>
-		  <!-- Image caption -->
+
 		  <span class="itemImageCaption"><?php echo $this->item->image_caption; ?></span>
 		  <?php endif; ?>
 
 		  <?php if($this->item->params->get('itemImageMainCredits') && !empty($this->item->image_credits)): ?>
-		  <!-- Image credits -->
+
 		  <span class="itemImageCredits"><?php echo $this->item->image_credits; ?></span>
 		  <?php endif; ?>
 
@@ -241,19 +241,19 @@
 
 	  <?php if(!empty($this->item->fulltext)): ?>
 	  <?php if($this->item->params->get('itemIntroText')): ?>
-	  <!-- Item introtext -->
+
 	  <div class="itemIntroText">
 	  	<?php echo $this->item->introtext; ?>
 	  </div>
 	  <?php endif; ?>
 	  <?php if($this->item->params->get('itemFullText')): ?>
-	  <!-- Item fulltext -->
+
 	  <div class="itemFullText">
 	  	<?php echo $this->item->fulltext; ?>
 	  </div>
 	  <?php endif; ?>
 	  <?php else: ?>
-	  <!-- Item text -->
+
 	  <div class="itemFullText">
 	  	<?php echo $this->item->introtext; ?>
 	  </div>
@@ -265,14 +265,14 @@
 		<div class="itemContentFooter">
 
 			<?php if($this->item->params->get('itemHits')): ?>
-			<!-- Item Hits -->
+
 			<span class="itemHits">
 				<?php echo JText::_('K2_READ'); ?> <b><?php echo $this->item->hits; ?></b> <?php echo JText::_('K2_TIMES'); ?>
 			</span>
 			<?php endif; ?>
 
 			<?php if($this->item->params->get('itemDateModified') && intval($this->item->modified)!=0): ?>
-			<!-- Item date modified -->
+
 			<span class="itemDateModified">
 				<?php echo JText::_('K2_LAST_MODIFIED_ON'); ?> <?php echo JHTML::_('date', $this->item->modified, JText::_('K2_DATE_FORMAT_LC2')); ?>
 			</span>
@@ -282,21 +282,21 @@
 		</div>
 		<?php endif; ?>
 
-	  <!-- Plugins: AfterDisplayContent -->
+
 	  <?php echo $this->item->event->AfterDisplayContent; ?>
 
-	  <!-- K2 Plugins: K2AfterDisplayContent -->
+
 	  <?php echo $this->item->event->K2AfterDisplayContent; ?>
 
 	  <div class="clr"></div>
   </div>
 
 	<?php if($this->item->params->get('itemTwitterButton',1) || $this->item->params->get('itemFacebookButton',1) || $this->item->params->get('itemGooglePlusOneButton',1)): ?>
-	<!-- Social sharing -->
+
 	<div class="itemSocialSharing">
 
 		<?php if($this->item->params->get('itemTwitterButton',1)): ?>
-		<!-- Twitter Button -->
+
 		<div class="itemTwitterButton">
 			<a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal"<?php if($this->item->params->get('twitterUsername')): ?> data-via="<?php echo $this->item->params->get('twitterUsername'); ?>"<?php endif; ?>>
 				<?php echo JText::_('K2_TWEET'); ?>
@@ -306,7 +306,7 @@
 		<?php endif; ?>
 
 		<?php if($this->item->params->get('itemFacebookButton',1)): ?>
-		<!-- Facebook Button -->
+
 		<div class="itemFacebookButton">
 			<div id="fb-root"></div>
 			<script type="text/javascript">
@@ -323,7 +323,7 @@
 		<?php endif; ?>
 
 		<?php if($this->item->params->get('itemGooglePlusOneButton',1)): ?>
-		<!-- Google +1 Button -->
+
 		<div class="itemGooglePlusOneButton">
 			<g:plusone annotation="inline" width="120"></g:plusone>
 			<script type="text/javascript">
@@ -345,7 +345,7 @@
   <div class="itemLinks">
 
 		<?php if($this->item->params->get('itemCategory')): ?>
-		<!-- Item category -->
+
 		<div class="itemCategory">
 			<span><?php echo JText::_('K2_PUBLISHED_IN'); ?></span>
 			<a href="<?php echo $this->item->category->link; ?>"><?php echo $this->item->category->name; ?></a>
@@ -353,7 +353,7 @@
 		<?php endif; ?>
 
 	  <?php if($this->item->params->get('itemTags') && count($this->item->tags)): ?>
-	  <!-- Item tags -->
+
 	  <div class="itemTagsBlock">
 		  <span><?php echo JText::_('K2_TAGGED_UNDER'); ?></span>
 		  <ul class="itemTags">
@@ -366,7 +366,7 @@
 	  <?php endif; ?>
 
 	  <?php if($this->item->params->get('itemAttachments') && count($this->item->attachments)): ?>
-	  <!-- Item attachments -->
+
 	  <div class="itemAttachmentsBlock">
 		  <span><?php echo JText::_('K2_DOWNLOAD_ATTACHMENTS'); ?></span>
 		  <ul class="itemAttachments">
@@ -387,7 +387,7 @@
   <?php endif; ?>
 
   <?php if($this->item->params->get('itemAuthorBlock') && empty($this->item->created_by_alias)): ?>
-  <!-- Author Block -->
+
   <div class="itemAuthorBlock">
 
   	<?php if($this->item->params->get('itemAuthorImage') && !empty($this->item->author->avatar)): ?>
@@ -413,7 +413,7 @@
 
 			<div class="clr"></div>
 
-			<!-- K2 Plugins: K2UserDisplay -->
+
 			<?php echo $this->item->event->K2UserDisplay; ?>
 
     </div>
@@ -422,7 +422,7 @@
   <?php endif; ?>
 
   <?php if($this->item->params->get('itemAuthorLatest') && empty($this->item->created_by_alias) && isset($this->authorLatestItems)): ?>
-  <!-- Latest items from author -->
+
 	<div class="itemAuthorLatest">
 		<h3><?php echo JText::_('K2_LATEST_FROM'); ?> <?php echo $this->item->author->name; ?></h3>
 		<ul>
@@ -449,7 +449,7 @@
 	?>
 
   <?php if($this->item->params->get('itemRelated') && isset($this->relatedItems)): ?>
-  <!-- Related items by tag -->
+
 	<div class="itemRelated">
 		<h3><?php echo JText::_("K2_RELATED_ITEMS_BY_TAG"); ?></h3>
 		<ul>
@@ -502,7 +502,7 @@
 	<div class="clr"></div>
 
   <?php if($this->item->params->get('itemVideo') && !empty($this->item->video)): ?>
-  <!-- Item video -->
+
   <a name="itemVideoAnchor" id="itemVideoAnchor"></a>
 
   <div class="itemVideoBlock">
@@ -529,7 +529,7 @@
   <?php endif; ?>
 
   <?php if($this->item->params->get('itemImageGallery') && !empty($this->item->gallery)): ?>
-  <!-- Item image gallery -->
+
   <a name="itemImageGalleryAnchor" id="itemImageGalleryAnchor"></a>
   <div class="itemImageGallery">
 	  <h3><?php echo JText::_('K2_IMAGE_GALLERY'); ?></h3>
@@ -538,7 +538,7 @@
   <?php endif; ?>
 
   <?php if($this->item->params->get('itemNavigation') && !JRequest::getCmd('print') && (isset($this->item->nextLink) || isset($this->item->previousLink))): ?>
-  <!-- Item navigation -->
+
   <div class="itemNavigation">
   	<span class="itemNavigationTitle"><?php echo JText::_('K2_MORE_IN_THIS_CATEGORY'); ?></span>
 
@@ -557,32 +557,32 @@
   </div>
   <?php endif; ?>
 
-  <!-- Plugins: AfterDisplay -->
+
   <?php echo $this->item->event->AfterDisplay; ?>
 
-  <!-- K2 Plugins: K2AfterDisplay -->
+
   <?php echo $this->item->event->K2AfterDisplay; ?>
 
   <?php if($this->item->params->get('itemComments') && ( ($this->item->params->get('comments') == '2' && !$this->user->guest) || ($this->item->params->get('comments') == '1'))): ?>
-  <!-- K2 Plugins: K2CommentsBlock -->
+
   <?php echo $this->item->event->K2CommentsBlock; ?>
   <?php endif; ?>
 
  <?php if($this->item->params->get('itemComments') && ($this->item->params->get('comments') == '1' || ($this->item->params->get('comments') == '2')) && empty($this->item->event->K2CommentsBlock)): ?>
-  <!-- Item comments -->
+
   <a name="itemCommentsAnchor" id="itemCommentsAnchor"></a>
 
   <div class="itemComments">
 
 	  <?php if($this->item->params->get('commentsFormPosition')=='above' && $this->item->params->get('itemComments') && !JRequest::getInt('print') && ($this->item->params->get('comments') == '1' || ($this->item->params->get('comments') == '2' && K2HelperPermissions::canAddComment($this->item->catid)))): ?>
-	  <!-- Item comments form -->
+
 	  <div class="itemCommentsForm">
 	  	<?php echo $this->loadTemplate('comments_form'); ?>
 	  </div>
 	  <?php endif; ?>
 
 	  <?php if($this->item->numOfComments>0 && $this->item->params->get('itemComments') && ($this->item->params->get('comments') == '1' || ($this->item->params->get('comments') == '2'))): ?>
-	  <!-- Item user comments -->
+
 	  <h3 class="itemCommentsCounter">
 	  	<span><?php echo $this->item->numOfComments; ?></span> <?php echo ($this->item->numOfComments>1) ? JText::_('K2_COMMENTS') : JText::_('K2_COMMENT'); ?>
 	  </h3>
@@ -651,7 +651,7 @@
 		<?php endif; ?>
 
 		<?php if($this->item->params->get('commentsFormPosition')=='below' && $this->item->params->get('itemComments') && !JRequest::getInt('print') && ($this->item->params->get('comments') == '1' || ($this->item->params->get('comments') == '2' && K2HelperPermissions::canAddComment($this->item->catid)))): ?>
-	  <!-- Item comments form -->
+
 	  <div class="itemCommentsForm">
 	  	<?php echo $this->loadTemplate('comments_form'); ?>
 	  </div>
@@ -674,4 +674,4 @@
 
 	<div class="clr"></div>
 </div>
-<!-- End K2 Item Layout -->
+

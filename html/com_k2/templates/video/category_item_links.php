@@ -15,10 +15,10 @@ K2HelperUtilities::setDefaultImage($this->item, 'itemlist', $this->params);
 
 ?>
 
-<!-- Start K2 Item Layout (links) -->
+
 <div class="catItemView group<?php echo ucfirst($this->item->itemGroup); ?><?php if($this->item->params->get('pageclass_sfx')) echo ' '.$this->item->params->get('pageclass_sfx'); ?>">
 	  <?php if($this->item->params->get('catItemTitle')): ?>
-	  <!-- Item title -->
+
 	  <h3 class="catItemTitle">
 	  	<?php if ($this->item->params->get('catItemTitleLinked')): ?>
 			<a href="<?php echo $this->item->link; ?>">
@@ -30,7 +30,7 @@ K2HelperUtilities::setDefaultImage($this->item, 'itemlist', $this->params);
 	  </h3>
 	  
 	  <?php if($this->item->params->get('catItemImage') && !empty($this->item->image)): ?>
-	  <!-- Item Image -->
+
 	  <div class="catItemImageBlock">
 		  <span class="catItemImage">
 		    <a href="<?php echo $this->item->link; ?>" title="<?php if(!empty($this->item->image_caption)) echo K2HelperUtilities::cleanHtml($this->item->image_caption); else echo K2HelperUtilities::cleanHtml($this->item->title); ?>">
@@ -43,4 +43,4 @@ K2HelperUtilities::setDefaultImage($this->item, 'itemlist', $this->params);
 	  
 	  <?php endif; ?>
 </div>
-<!-- End K2 Item Layout (links) -->
+

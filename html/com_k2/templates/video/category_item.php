@@ -19,7 +19,7 @@ K2HelperUtilities::setDefaultImage($this->item, 'itemlist', $this->params);
 
 ?>
 
-<!-- K2 Plugin: K2VideoData -->
+
 <?php
 $videoImage    = $this->item->videoImage;
 $videoDuration = $this->item->videoDuration;
@@ -33,30 +33,30 @@ $videoDuration = $this->item->videoDuration;
 <p><?php echo $videoDuration ?></p>
 <?php endif; ?>
 
-<!-- Start K2 Item Layout -->
+
 <div class="catItemView group<?php echo ucfirst($this->item->itemGroup); ?><?php echo ($this->item->featured) ? ' catItemIsFeatured' : ''; ?><?php if ($this->item->params->get('pageclass_sfx')) {
 	echo ' ' . $this->item->params->get('pageclass_sfx');
 } ?>">
 
-	<!-- Plugins: BeforeDisplay -->
+
 <?php echo $this->item->event->BeforeDisplay; ?>
 
-	<!-- K2 Plugins: K2BeforeDisplay -->
+
 <?php echo $this->item->event->K2BeforeDisplay; ?>
 
 	<div class="catItemHeader">
 		<?php if ($this->item->params->get('catItemDateCreated')): ?>
-		<!-- Date created -->
+
 		<span class="catItemDateCreated">
 			<?php echo JHTML::_('date', $this->item->created, JText::_('K2_DATE_FORMAT_LC2')); ?>
 		</span>
 		<?php endif; ?>
 
 		<?php if ($this->item->params->get('catItemTitle')): ?>
-		<!-- Item title -->
+
 		<h3 class="catItemTitle">
 			<?php if (isset($this->item->editLink)): ?>
-			<!-- Item edit link -->
+
 			<span class="catItemEditLink">
 				<a class="modal" rel="{handler:'iframe',size:{x:990,y:550}}" href="<?php echo $this->item->editLink; ?>">
 					<?php echo JText::_('K2_EDIT_ITEM'); ?>
@@ -73,7 +73,7 @@ $videoDuration = $this->item->videoDuration;
 			<?php endif; ?>
 
 			<?php if ($this->item->params->get('catItemFeaturedNotice') && $this->item->featured): ?>
-			<!-- Featured flag -->
+
 			<span>
 		  	<sup>
 				  <?php echo JText::_('K2_FEATURED'); ?>
@@ -84,7 +84,7 @@ $videoDuration = $this->item->videoDuration;
 		<?php endif; ?>
 
 		<?php if ($this->item->params->get('catItemAuthor')): ?>
-		<!-- Item Author -->
+
 		<span class="catItemAuthor">
 			<?php echo K2HelperUtilities::writtenBy($this->item->author->profile->gender); ?>
 			<?php if (isset($this->item->author->link) && $this->item->author->link): ?>
@@ -96,14 +96,14 @@ $videoDuration = $this->item->videoDuration;
 		<?php endif; ?>
 	</div>
 
-	<!-- Plugins: AfterDisplayTitle -->
+
 <?php echo $this->item->event->AfterDisplayTitle; ?>
 
-	<!-- K2 Plugins: K2AfterDisplayTitle -->
+
 <?php echo $this->item->event->K2AfterDisplayTitle; ?>
 
 <?php if ($this->item->params->get('catItemRating')): ?>
-	<!-- Item Rating -->
+
 	<div class="catItemRatingBlock">
 		<ul class="itemRatingList">
 			<li class="itemCurrentRating" id="itemCurrentRating<?php echo $this->item->id; ?>" style="width:<?php echo $this->item->votingPercentage; ?>%;"></li>
@@ -118,14 +118,14 @@ $videoDuration = $this->item->videoDuration;
 
 <div class="catItemBody">
 
-	<!-- Plugins: BeforeDisplayContent -->
+
 	<?php echo $this->item->event->BeforeDisplayContent; ?>
 
-	<!-- K2 Plugins: K2BeforeDisplayContent -->
+
 	<?php echo $this->item->event->K2BeforeDisplayContent; ?>
 
 	<?php if ($this->item->params->get('catItemImage') && !empty($this->item->image)): ?>
-	<!-- Item Image -->
+
 	<div class="catItemImageBlock">
 		  <span class="catItemImage">
 		    <a href="<?php echo $this->item->link; ?>" title="<?php if (!empty($this->item->image_caption)) {
@@ -146,7 +146,7 @@ $videoDuration = $this->item->videoDuration;
 	<?php endif; ?>
 
 	<?php if ($this->item->params->get('catItemIntroText')): ?>
-	<!-- Item introtext -->
+
 	<div class="catItemIntroText">
 		<?php echo $this->item->introtext; ?>
 	</div>
@@ -155,7 +155,7 @@ $videoDuration = $this->item->videoDuration;
 	<div class="clr"></div>
 
 	<?php if ($this->item->params->get('catItemExtraFields') && count($this->item->extra_fields)): ?>
-	<!-- Item extra fields -->
+
 	<div class="catItemExtraFields">
 		<h4><?php echo JText::_('K2_ADDITIONAL_INFO'); ?></h4>
 		<ul>
@@ -176,10 +176,10 @@ $videoDuration = $this->item->videoDuration;
 	</div>
 	<?php endif; ?>
 
-	<!-- Plugins: AfterDisplayContent -->
+
 	<?php echo $this->item->event->AfterDisplayContent; ?>
 
-	<!-- K2 Plugins: K2AfterDisplayContent -->
+
 	<?php echo $this->item->event->K2AfterDisplayContent; ?>
 
 	<div class="clr"></div>
@@ -194,7 +194,7 @@ $videoDuration = $this->item->videoDuration;
 <div class="catItemLinks">
 
 	<?php if ($this->item->params->get('catItemHits')): ?>
-	<!-- Item Hits -->
+
 	<div class="catItemHitsBlock">
 			<span class="catItemHits">
 				<?php echo JText::_('K2_READ'); ?>
@@ -204,7 +204,7 @@ $videoDuration = $this->item->videoDuration;
 	<?php endif; ?>
 
 	<?php if ($this->item->params->get('catItemCategory')): ?>
-	<!-- Item category name -->
+
 	<div class="catItemCategory">
 		<span><?php echo JText::_('K2_PUBLISHED_IN'); ?></span>
 		<a href="<?php echo $this->item->category->link; ?>"><?php echo $this->item->category->name; ?></a>
@@ -212,7 +212,7 @@ $videoDuration = $this->item->videoDuration;
 	<?php endif; ?>
 
 	<?php if ($this->item->params->get('catItemTags') && count($this->item->tags)): ?>
-	<!-- Item tags -->
+
 	<div class="catItemTagsBlock">
 		<span><?php echo JText::_('K2_TAGGED_UNDER'); ?></span>
 		<ul class="catItemTags">
@@ -225,7 +225,7 @@ $videoDuration = $this->item->videoDuration;
 	<?php endif; ?>
 
 	<?php if ($this->item->params->get('catItemAttachments') && count($this->item->attachments)): ?>
-	<!-- Item attachments -->
+
 	<div class="catItemAttachmentsBlock">
 		<span><?php echo JText::_('K2_DOWNLOAD_ATTACHMENTS'); ?></span>
 		<ul class="catItemAttachments">
@@ -250,7 +250,7 @@ $videoDuration = $this->item->videoDuration;
 <div class="clr"></div>
 
 <?php if ($this->item->params->get('catItemVideo') && !empty($this->item->video)): ?>
-<!-- Item video -->
+
 <div class="catItemVideoBlock">
 	<h3><?php echo JText::_('K2_RELATED_VIDEO'); ?></h3>
 	<?php if ($this->item->videoType == 'embedded'): ?>
@@ -264,7 +264,7 @@ $videoDuration = $this->item->videoDuration;
 <?php endif; ?>
 
 <?php if ($this->item->params->get('catItemImageGallery') && !empty($this->item->gallery)): ?>
-<!-- Item image gallery -->
+
 <div class="catItemImageGallery">
 	<h4><?php echo JText::_('K2_IMAGE_GALLERY'); ?></h4>
 	<?php echo $this->item->gallery; ?>
@@ -274,10 +274,10 @@ $videoDuration = $this->item->videoDuration;
 <div class="clr"></div>
 
 <?php if ($this->item->params->get('catItemCommentsAnchor') && (($this->item->params->get('comments') == '2' && !$this->user->guest) || ($this->item->params->get('comments') == '1'))): ?>
-<!-- Anchor link to comments below -->
+
 <div class="catItemCommentsLink">
 	<?php if (!empty($this->item->event->K2CommentsCounter)): ?>
-	<!-- K2 Plugins: K2CommentsCounter -->
+
 	<?php echo $this->item->event->K2CommentsCounter; ?>
 	<?php else: ?>
 	<?php if ($this->item->numOfComments > 0): ?>
@@ -294,7 +294,7 @@ $videoDuration = $this->item->videoDuration;
 <?php endif; ?>
 
 <?php if ($this->item->params->get('catItemReadMore')): ?>
-<!-- Item "read more..." link -->
+
 <div class="catItemReadMore">
 	<a class="k2ReadMore" href="<?php echo $this->item->link; ?>">
 		<?php echo JText::_('K2_READ_MORE'); ?>
@@ -305,7 +305,7 @@ $videoDuration = $this->item->videoDuration;
 <div class="clr"></div>
 
 <?php if ($this->item->params->get('catItemDateModified')): ?>
-<!-- Item date modified -->
+
 <?php if ($this->item->modified != $this->nullDate && $this->item->modified != $this->item->created): ?>
 	<span class="catItemDateModified">
 		<?php echo JText::_('K2_LAST_MODIFIED_ON'); ?> <?php echo JHTML::_('date', $this->item->modified, JText::_('K2_DATE_FORMAT_LC2')); ?>
@@ -313,12 +313,12 @@ $videoDuration = $this->item->videoDuration;
 	<?php endif; ?>
 <?php endif; ?>
 
-<!-- Plugins: AfterDisplay -->
+
 <?php echo $this->item->event->AfterDisplay; ?>
 
-<!-- K2 Plugins: K2AfterDisplay -->
+
 <?php echo $this->item->event->K2AfterDisplay; ?>
 
 <div class="clr"></div>
 </div>
-<!-- End K2 Item Layout -->
+
