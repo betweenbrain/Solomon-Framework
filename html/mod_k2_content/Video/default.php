@@ -29,7 +29,7 @@
 		$videoDuration = $item->videoDuration;
 		?>
 			<a href="<?php echo $item->link; ?>"><img src="<?php echo  $item->videoImage;?>" title="<?php echo $item->title; ?>" />
-			<p class="title><?php echo $item->title . '<span class="duration">' . $videoDuration . '</span>' ?></p>
+			<p class="title"><?php echo $item->title . '<span class="duration">' . $videoDuration . '</span>' ?></p>
 			</a>
 		</li>
 		<?php endforeach; ?>
