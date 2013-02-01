@@ -9,12 +9,12 @@
 
 ?>
 
-<div id="k2ModuleBox<?php echo $module->id; ?>" class="featured k2ItemsBlock<?php if ($params->get('moduleclass_sfx')) {echo ' ' . $params->get('moduleclass_sfx');} ?>">
-
+<div id="k2ModuleBox<?php echo $module->id; ?>" class="featured k2ItemsBlock<?php if ($params->get('moduleclass_sfx')) {
+	echo ' ' . $params->get('moduleclass_sfx');
+} ?>">
 	<?php if ($params->get('itemPreText')): ?>
 	<p class="modulePretext"><?php echo $params->get('itemPreText'); ?></p>
 	<?php endif; ?>
-
 	<?php if (count($items)): ?>
 	<ol>
 		<?php foreach ($items as $key => $item): ?>
@@ -23,28 +23,19 @@
 		<li class="block">
 			<ul>
 		<?php endif ?>
-		<li class="<?php echo ($key % 2) ? "odd" : "even"; if ($key == 0) { echo ' featured'; }    if (count($items) == $key + 1) {echo ' last';}?>">
-			<?php echo $item->event->BeforeDisplay; ?>
-			<?php echo $item->event->K2BeforeDisplay; ?>
-
+		<li class="<?php echo ($key % 2) ? "odd" : "even"; if ($key == 0) {
+			echo ' featured';
+		}    if (count($items) == $key + 1) {
+			echo ' last';
+		}?>">
 			<?php
 			$videoImage    = $item->videoImage;
 			$videoDuration = $item->videoDuration;
 			?>
-
 			<a href="<?php echo $item->link; ?>"><img src="<?php echo  $item->videoImage;?>" title="<?php echo $item->title; ?>" />
-				<p class="details"><?php echo '<span class="order">' . ($key + 1) . '</span>' . $item->title . '<span class="duration">' . $videoDuration . '</span>'?></p>
+				<p class="title"><?php echo '<span class="order">' . ($key + 1) . '</span>' . $item->title . '<span class="duration">' . $videoDuration . '</span>'?></p>
 			</a>
-			<?php echo $item->event->AfterDisplayTitle; ?>
-			<?php echo $item->event->K2AfterDisplayTitle; ?>
-			<?php echo $item->event->BeforeDisplayContent; ?>
-			<?php echo $item->event->K2BeforeDisplayContent; ?>
-			<?php echo $item->event->AfterDisplayContent; ?>
-			<?php echo $item->event->K2AfterDisplayContent; ?>
-			<?php echo $item->event->AfterDisplay; ?>
-			<?php echo $item->event->K2AfterDisplay; ?>
 		</li>
-
 		<?php // test if not leading item and is even
 		if (($key != 0) && ($key % 2 == 0)) : ?>
 			</ul>
@@ -54,5 +45,4 @@
 		<?php endforeach; ?>
 	</ol>
 	<?php endif; ?>
-
 </div>
