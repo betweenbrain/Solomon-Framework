@@ -78,7 +78,7 @@ body {
 	width : 595px;
 }
 
-.k2ItemsBlock .details {
+.k2ItemsBlock .title {
 	width       : 265px;
 	color       : #fff;
 	font-weight : bold;
@@ -89,27 +89,27 @@ body {
 	padding     : 0;
 	margin      : 0;
 	text-shadow : 1px 1px 3px #000;
-	white-space: nowrap;
+	white-space : nowrap;
 }
 
-.featured.k2ItemsBlock .details {
-	top: -45px;
+.featured.k2ItemsBlock .title {
+	top : -45px;
 }
 
-.featured.k2ItemsBlock li.featured .details {
-	width: 580px;
+.featured.k2ItemsBlock li.featured .title {
+	width : 580px;
 }
 
 .featured.k2ItemsBlock li.even {
 	clear : left;
 }
 
-.k2ItemsBlock li .details .order {
+.k2ItemsBlock li .title .order {
 	font-size     : 30px;
 	padding-right : 5px;
 }
 
-.k2ItemsBlock li .details .duration {
+.k2ItemsBlock li .title .duration {
 	font-size    : 15px;
 	padding-left : 5px;
 }
@@ -126,6 +126,60 @@ body {
 	height      : 0;
 	padding-top : 26px;
 }
+
+/**
+ * K2 Category view
+ */
+
+.itemListView .itemContainer img {
+	max-width : 280px;
+	border    : 4px solid #ddd;
+}
+
+.itemListView .itemContainer:hover img {
+	border-color : #ce00cf;
+}
+
+div.catitemisfeatured {
+	background : none;
+}
+
+.itemList .itemContainer {
+	position : relative;
+}
+
+.itemList .itemContainer .details {
+	position    : absolute;
+	top         : 0;
+	left        : 0;
+	text-indent : 100%;
+	white-space : nowrap;
+	overflow    : hidden;
+	width       : 100%;
+}
+
+.itemList .itemContainer:hover .details {
+	z-index            : 2;
+	text-indent        : 0;
+	top                : -10px;
+	left               : 100%;
+	background         : #fff;
+	white-space        : normal;
+	padding            : 10px;
+	-moz-border-radius : 10px;
+	border-radius      : 10px;
+	-moz-box-shadow    : 0 0 25px #444;
+	-webkit-box-shadow : 0 0 25px #444;
+	box-shadow         : 0 0 25px #444;
+}
+
+.itemList .itemContainer.last:hover .details {
+	left : -100%;
+}
+
+/**
+ * Slider module
+ */
 
 .carousel-wrap {
 	padding-bottom : 21px;
