@@ -26,8 +26,6 @@ if ($module) {
 	$doc->addScriptDeclaration($js);
 }
 ?>
-
-
 <div id="k2Container" class="itemListView<?php if($this->params->get('pageclass_sfx')) echo ' '.$this->params->get('pageclass_sfx'); ?>">
 
 	<?php if($this->params->get('show_page_title')): ?>
