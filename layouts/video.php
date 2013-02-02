@@ -30,7 +30,8 @@ if (JFile::exists($header)) {
 <?php endif ?>
 
 <jdoc:include type="component" />
-
+<?php // Load modules onlly if K2 view is an itemlist (category)
+if (JRequest::getCmd('view', 0) == "itemlist") : ?>
 <div id="content-below" class="clearfix <?php echo $contentBelowClass ?>">
 	<?php if ($this->countModules('content-below-1')) : ?>
 	<div class="content-below-1 clearfix">
@@ -68,7 +69,7 @@ if (JFile::exists($header)) {
 	</div>
 	<?php endif ?>
 </div>
-
+<?php endif ?>
 <?php
 // Load common footer
 if (JFile::exists($footer)) {
