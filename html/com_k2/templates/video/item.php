@@ -7,15 +7,11 @@
  * @license        GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
  */
 
-?>
-
-<?php if (JRequest::getInt('print') == 1): ?>
-
+if (JRequest::getInt('print') == 1): ?>
 <a class="itemPrintThisPage" rel="nofollow" href="#" onclick="window.print();return false;">
 	<span><?php echo JText::_('K2_PRINT_THIS_PAGE'); ?></span>
 </a>
 <?php endif; ?>
-
 
 <span id="startOfPageId<?php echo JRequest::getInt('id'); ?>"></span>
 
@@ -23,22 +19,17 @@
 	echo ' ' . $this->item->params->get('pageclass_sfx');
 } ?>">
 <div class="itemHeader">
-
 <?php
 $videoProvider = $this->item->videoProvider;
 $videoID       = $this->item->videoID;
 $videoDuration = $this->item->videoDuration;
-?>
 
-<?php
 if ($videoProvider && $videoID) {
 	echo '{' . $videoProvider . ' ' . $videoID . '}';
 }
 ?>
-
 <h2 class="itemTitle">
 	<?php if (isset($this->item->editLink)): ?>
-
 	<span class="itemEditLink">
 			<a class="modal" rel="{handler:'iframe',size:{x:990,y:550}}" href="<?php echo $this->item->editLink; ?>">
 				<?php echo JText::_('K2_EDIT_ITEM'); ?>
