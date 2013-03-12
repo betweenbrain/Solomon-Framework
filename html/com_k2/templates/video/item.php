@@ -22,11 +22,16 @@ if (JRequest::getInt('print') == 1): ?>
 <?php
 $videoProvider = $this->item->videoProvider;
 $videoID       = $this->item->videoID;
+$videoWidth    = $this->item->videoWidth;
+$videoHeight   = $this->item->videoHeight;
+$videoPlayer   = $this->item->videoPlayer;
 $videoDuration = $this->item->videoDuration;
 
-if ($videoProvider && $videoID) {
-	echo '{' . $videoProvider . ' ' . $videoID . '}';
-}
+$embed  = ($videoProvider && $videoID ? $videoProvider . ' ' . $videoID : NULL);
+$embed .= ($videoWidth && $videoHeight ? ' ' . $videoWidth . 'x' . $videoHeight : '');
+$embed .= ($videoPlayer ? ' ' . $videoPlayer : '');
+
+echo($embed ? '{' . $embed . '}' : NULL);
 ?>
 <h2 class="itemTitle">
 	<?php if (isset($this->item->editLink)): ?>
