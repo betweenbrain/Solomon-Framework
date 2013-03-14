@@ -27,52 +27,6 @@ if ($module) {
 }
 ?>
 
-<?php
-foreach ($this->leading as $leading) {
-	$ids[] = $leading->id;
-}
-foreach ($this->primary as $primary) {
-	$ids[] = $primary->id;
-}
-foreach ($this->secondary as $secondary) {
-	$ids[] = $secondary->id;
-}
-
-$db    = JFactory::getDbo();
-$query = "SELECT tag.name, tag.id
-  FROM #__k2_tags as tag
-  LEFT JOIN #__k2_tags_xref AS xref ON xref.tagID = tag.id
-  WHERE xref.itemID IN (" . implode(',', $ids) . ")
-  AND tag.published = 1";
-$db->setQuery($query);
-$rows = $db->loadObjectList();
-
-$cloud = array();
-if (count($rows)) {
-	foreach ($rows as $tag) {
-		if (@array_key_exists($tag->name, $cloud)) {
-			$cloud[$tag->name]++;
-		} else {
-			$cloud[$tag->name] = 1;
-		}
-	}
-
-	foreach ($cloud as $key => $value) {
-		$tmp            = new stdClass;
-		$tmp->tag       = $key;
-		$tmp->count     = $value;
-		$tmp->link      = urldecode(JRoute::_(K2HelperRoute::getTagRoute($key)));
-		$tags[$counter] = $tmp;
-		$counter++;
-	}
-
-	foreach ($tags as $tag) {
-		echo '<a href="' . $tag->link . '">' . $tag->tag . '</a>' . $tag->count;
-	}
-}
-?>
-
-
 <div id="k2Container" class="itemListView<?php if($this->params->get('pageclass_sfx')) echo ' '.$this->params->get('pageclass_sfx'); ?>">
 
 	<?php if($this->params->get('show_page_title')): ?>
