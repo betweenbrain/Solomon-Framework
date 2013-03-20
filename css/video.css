@@ -268,6 +268,11 @@ header nav ul.menu li {
 	padding-top : .5em;
 }
 
+header nav ul.menu .active {
+	border-bottom : 4px solid #ce00cf;
+	/*background : url("../images/highlight.png") 50% 100% no-repeat;*/
+}
+
 header nav ul.menu li.parent:hover {
 	background                      : #191919;
 	-webkit-border-top-left-radius  : 5px;
@@ -300,6 +305,34 @@ header nav ul.menu ul {
 header nav ul.menu ul li {
 	width       : 100%;
 	padding-top : 0;
+}
+
+header nav ul.menu li.parent a span:after {
+	content      : "";
+	width        : 0;
+	height       : 0;
+	border-left  : 8px solid transparent;
+	border-right : 8px solid transparent;
+	border-top   : 8px solid #fff;
+	position     : relative;
+	left         : 3px;
+	top          : -2px;
+	font-size    : 0px;
+	line-height  : 0px;
+
+}
+
+header nav ul.menu li.parent:hover a span:after {
+	border-left   : 8px solid transparent;
+	border-right  : 8px solid transparent;
+	border-bottom : 8px solid #efefef;
+	border-top    : 0;
+	top: -10px;
+}
+
+header nav ul.menu li.parent li a span:after,
+header nav ul.menu li.parent:hover li a span:after{
+	border : 0;
 }
 
 header nav ul.menu ul li a {
@@ -349,5 +382,17 @@ header nav ul.menu li.topics ul li {
 	float       : left;
 	width       : 190px;
 	margin-left : 15px;
+
 }
 
+/*
+header nav ul.menu li.channels ul li:nth-child(-n+6) {
+	float : left;
+	clear : left;
+}
+
+header nav ul.menu li.channels ul li:nth-child(n+5) {
+	float : right;
+	clear : right;
+}
+*/
