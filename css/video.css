@@ -177,7 +177,7 @@ header nav {
 }
 
 .itemListView .itemContainer:hover img {
-	border-color : #ce00cf;
+	border-color : #0089a1;
 }
 
 div.itemisfeatured,
@@ -268,11 +268,6 @@ header nav ul.menu li {
 	padding-top : .5em;
 }
 
-header nav ul.menu .active {
-	border-bottom : 4px solid #ce00cf;
-	/*background : url("../images/highlight.png") 50% 100% no-repeat;*/
-}
-
 header nav ul.menu li.parent:hover {
 	background                      : #191919;
 	-webkit-border-top-left-radius  : 5px;
@@ -343,7 +338,7 @@ header nav ul.menu ul li a {
 }
 
 header nav ul.menu ul li:hover a {
-	background            : #ce00cf;
+	background            : #0089a1;
 	-webkit-border-radius : 5px;
 	-moz-border-radius    : 5px;
 	border-radius         : 5px;
