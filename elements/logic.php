@@ -24,6 +24,16 @@ $view = JRequest::getCmd('view');
 $header = JPATH_THEMES . '/' . $this->template . '/layouts/header.php';
 $footer = JPATH_THEMES . '/' . $this->template . '/layouts/footer.php';
 
+$addJquery = TRUE;
+foreach ($doc->_scripts as $script => $type) {
+	if (preg_match('/([\/a-zA-Z0-9_:\.-]*)jquery([0-9\.-]|min|pack)*?.js/', $script)) {
+		$addJquery = FALSE;
+	}
+}
+if ($addJquery) {
+	$doc->addScript('//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js');
+}
+
 // Remove MooTools and core scripts
 /*
 unset($doc->_scripts[$this->baseurl . '/media/system/js/mootools.js']);
