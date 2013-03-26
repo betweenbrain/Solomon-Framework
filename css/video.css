@@ -30,10 +30,13 @@ header nav {
 }
 
 .top-edge span {
-	width        : 16.3%;
-	display      : inline-block;
-	border-top   : 2px;
-	border-style : solid;
+	width            : 16.66%;
+	display          : inline-block;
+	border-style     : solid;
+	border-top-width : 4px;
+	border-left      : 0;
+	border-right     : 0;
+	border-bottom    : 0;
 }
 
 .top-edge .red {
@@ -268,14 +271,13 @@ header nav ul.menu li {
 	padding-top : .5em;
 }
 
-
 header nav ul.menu .current {
 	/*border-bottom : 4px solid #0089a1;*/
 	background : url("../images/highlight.png") 50% 100% no-repeat;
 }
 
 header nav ul.menu li .current {
-	background: none;
+	background : none;
 }
 
 header nav ul.menu li.parent:hover {
@@ -332,11 +334,11 @@ header nav ul.menu li.parent:hover a span:after {
 	border-right  : 8px solid transparent;
 	border-bottom : 8px solid #efefef;
 	border-top    : 0;
-	top: -10px;
+	top           : -10px;
 }
 
 header nav ul.menu li.parent li a span:after,
-header nav ul.menu li.parent:hover li a span:after{
+header nav ul.menu li.parent:hover li a span:after {
 	border : 0;
 }
 
