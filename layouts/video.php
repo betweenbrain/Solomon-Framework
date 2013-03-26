@@ -12,6 +12,7 @@
  */
 
 $doc->addStyleSheet($template . '/css/video.css', 'text/css', 'screen');
+$doc->addScript($template . '/js/jquery.gugg-video.js');
 
 // Load common header
 if (JFile::exists($header)) {

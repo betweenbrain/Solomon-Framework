@@ -17,12 +17,18 @@ if (JFile::exists($header)) {
 }
 
 ?>
-<h1>The Column Layout</h1>
+<h1>Two Column Layout</h1>
 <?php if ($this->countModules('nav')) : ?>
 <nav id="nav" class="clear clearfix">
 	<jdoc:include type="modules" name="nav" style="raw" />
 </nav>
 <?php endif ?>
+
+<div class="tags clearfix">
+	<jdoc:include type="modules" name="tags" style="xhtml"/>
+</div
+
+<jdoc:include type="component" />
 
 <?php
 // Load common footer

@@ -268,6 +268,16 @@ header nav ul.menu li {
 	padding-top : .5em;
 }
 
+
+header nav ul.menu .current {
+	/*border-bottom : 4px solid #0089a1;*/
+	background : url("../images/highlight.png") 50% 100% no-repeat;
+}
+
+header nav ul.menu li .current {
+	background: none;
+}
+
 header nav ul.menu li.parent:hover {
 	background                      : #191919;
 	-webkit-border-top-left-radius  : 5px;
