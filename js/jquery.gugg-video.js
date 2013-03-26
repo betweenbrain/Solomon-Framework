@@ -14,14 +14,19 @@
 (function ($) {
     "use strict";
     $().ready(function () {
-        var $this = $('li li.active'), $parent = $this.closest('li.parent'), $itemText = $this.find('span').html(), $parentSpan = $this.closest('li.parent').find('span').first();
-        if ($parent.length) {
-            $parent.attr('class', $parent.attr('class') + ' current');
-            $this.attr('class', $this.attr('class') + ' current');
-            $parentSpan.html($parentSpan.html() + ': ' + $itemText);
-        } else {
-            var $this = $('li.active');
-            $this.attr('class', $this.attr('class') + ' current');
-        }
+        $('li.active').each(function (index) {
+            // If only one li.active, give it current class
+            if (!$(this).siblings('li').hasClass('active')) {
+                $(this).attr('class', $(this).attr('class') + ' current');
+            }
+            // If more than one li.active, give second and beyond current class
+            if ($(this).siblings('li').hasClass('active') && index == "1") {
+                $(this).attr('class', $(this).attr('class') + ' current');
+            }
+            if ($(this).closest('li.parent').length && index >= "2") {
+                var $itemText = $(this).find('span').html(), $parentSpan = $(this).closest('li.parent').find('span').first();
+                $parentSpan.html($parentSpan.html() + ': ' + $itemText);
+            }
+        });
     });
 }(jQuery));
