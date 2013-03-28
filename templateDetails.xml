@@ -98,6 +98,11 @@
 	<params addpath="/templates/cloaked-sansa/elements">
 		<param type="panel"
 		       title="General"/>
+		<param name="loadjQuery"
+		       type="jqueryversion"
+		       default=""
+		       label="Load jQuery"
+		       description="Select the version of the jQuery JavaScript library to load, hosted by Google's CDN, if it isn't already loaded."/>
 		<param type="panel"
 		       title="Two Column Layout"/>
 		<param name="twoColumn"

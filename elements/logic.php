@@ -20,18 +20,27 @@ $template = 'templates/' . $this->template;
 // Get the current view
 $view = JRequest::getCmd('view');
 
+
+// Define shortcuts for template parameters
+$loadjQuery              = $this->params->get('loadjQuery');
+
 // Common template elements (use absolute paths for security)
 $header = JPATH_THEMES . '/' . $this->template . '/layouts/header.php';
 $footer = JPATH_THEMES . '/' . $this->template . '/layouts/footer.php';
 
-$addJquery = TRUE;
-foreach ($doc->_scripts as $script => $type) {
-	if (preg_match('/([\/a-zA-Z0-9_:\.-]*)jquery([0-9\.-]|min|pack)*?.js/', $script)) {
-		$addJquery = FALSE;
+if ($loadjQuery) {
+// Set load jQuery flag to true
+	$addJquery = TRUE;
+// Check if jQuery is already loaded
+	foreach ($doc->_scripts as $script => $type) {
+		if (preg_match('/([\/a-zA-Z0-9_:\.-]*)jquery([0-9\.-]|min|pack)*?.js/', $script)) {
+			$addJquery = FALSE;
+		}
 	}
-}
-if ($addJquery) {
-	$doc->_scripts = array_merge(array('//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js' => 'text/javascript'), $doc->_scripts);
+// If jQuery not detected, prepend $doc->_scripts with jQuery
+	if ($addJquery) {
+		$doc->_scripts = array_merge(array($loadjQuery => 'text/javascript'), $doc->_scripts);
+	}
 }
 
 // Remove MooTools and core scripts
