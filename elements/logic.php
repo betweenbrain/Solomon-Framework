@@ -31,7 +31,7 @@ foreach ($doc->_scripts as $script => $type) {
 	}
 }
 if ($addJquery) {
-	$doc->addScript('//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js');
+	$doc->_scripts = array_merge(array('//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js' => 'text/javascript'), $doc->_scripts);
 }
 
 // Remove MooTools and core scripts
