@@ -70,7 +70,7 @@ if ($module) {
 
 			<?php if($this->params->get('catTitle')): ?>
 
-			<h2><span class="title">Showing</span> All in <?php echo $this->category->name; ?><?php if($this->params->get('catTitleItemCounter')) echo ' ('.$this->pagination->total.')'; ?></h2>
+			<h2><?php echo $this->category->name; ?><?php if($this->params->get('catTitleItemCounter')) echo ' ('.$this->pagination->total.')'; ?></h2>
 			<?php endif; ?>
 
 			<?php if($this->params->get('catDescription')): ?>
