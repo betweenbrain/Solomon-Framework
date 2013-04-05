@@ -252,6 +252,7 @@ header nav a {
 	color           : #fff;
 	text-decoration : none;
 	padding         : .1em .7em 1em 1.5em;
+	white-space     : nowrap;
 }
 
 header nav ul.menu {
@@ -269,6 +270,7 @@ header nav ul.menu li {
 	float       : left;
 	position    : relative;
 	padding-top : .5em;
+	list-style-type: none;
 }
 
 header nav ul.menu .current {
@@ -393,13 +395,19 @@ header nav ul.menu li.topics ul li {
 }
 
 /*
-header nav ul.menu li.channels ul li:nth-child(-n+6) {
-	float : left;
-	clear : left;
+ * Tags Module
+ */
+
+.tags li {
+	list-style : none;
+	width      : 288px
 }
 
-header nav ul.menu li.channels ul li:nth-child(n+5) {
-	float : right;
-	clear : right;
+.tags ul {
+	margin-left : 10px;
+	padding     : 0;
 }
-*/
+
+.tags li .count {
+	float : right;
+}
