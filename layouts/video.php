@@ -39,9 +39,7 @@ if (JFile::exists($header)) {
 			<jdoc:include type="message" />
 		<?php endif ?>
 
-		<div class="tags clearfix">
-			<jdoc:include type="modules" name="tags" style="xhtml" />
-		</div>
+		<jdoc:include type="modules" name="tags" style="xhtml" />
 
 		<jdoc:include type="component" />
 		<?php // Load modules onlly if K2 view is an itemlist (category)
