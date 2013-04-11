@@ -43,7 +43,7 @@ if (JFile::exists($header)) {
 
 		<jdoc:include type="component" />
 		<?php // Load modules onlly if K2 view is an itemlist (category)
-		if (JRequest::getCmd('view', 0) == "itemlist" && JRequest::getCmd('option') == "com_k2") : ?>
+		if ( $view == "itemlist" &&  $component == "com_k2") : ?>
 			<div id="content-below" class="clearfix <?php echo $contentBelowClass ?>">
 				<?php if ($this->countModules('content-below-1')) : ?>
 					<div class="content-below-1 clearfix">

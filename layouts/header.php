@@ -10,6 +10,10 @@
  * Copyright  Copyright (C) 2013 betweenbrain llc. All Rights Reserved.
  * License    GNU GPL v3 or later
  */
+
+$view = JRequest::getCmd('view', 0);
+$component = JRequest::getCmd('option');
+
 ?>
 <html lang="<?php echo $this->language ?>" dir="<?php echo $this->direction ?>">
 
